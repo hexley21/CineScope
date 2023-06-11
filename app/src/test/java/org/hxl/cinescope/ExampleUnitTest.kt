@@ -1,4 +1,4 @@
-package org.hxl.cinequiz
+package org.hxl.cinescope
 
 import org.junit.Test
 

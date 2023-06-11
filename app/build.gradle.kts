@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "org.hxl.cinequiz"
+    namespace = "org.hxl.cinescope"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "org.hxl.cinequiz"
+        applicationId = "org.hxl.cinescope"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
