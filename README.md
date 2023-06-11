@@ -1,1 +1,1 @@
-# CineQuiz
+# CineScope
