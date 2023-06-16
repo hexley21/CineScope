@@ -42,7 +42,19 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.lifecycle.common)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.espresso.contrib)
+    androidTestImplementation(libs.androidx.fragment.testing)
+    androidTestImplementation(libs.androidx.navigation.testing)
+
+    debugImplementation(libs.androidx.fragment.testing.manifest)
 }
