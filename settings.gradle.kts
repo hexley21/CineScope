@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "CineScope"
 include(":app")
 include(":core:ui")
+include(":feature:onboarding")
