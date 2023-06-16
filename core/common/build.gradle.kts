@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "org.hxl.ui"
+    namespace = "org.hxl.common"
     compileSdk = 33
 
     defaultConfig {
@@ -13,6 +13,11 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+    }
+
+
+    buildFeatures {
+        dataBinding = true
     }
 
     buildTypes {
@@ -36,4 +41,5 @@ android {
 dependencies {
     implementation(libs.core.ktx)
     implementation(libs.material)
+    implementation(libs.androidx.lifecycle.common)
 }
