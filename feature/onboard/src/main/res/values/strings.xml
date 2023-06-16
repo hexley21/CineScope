@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboard_heading">Welcome to CineScope</string>
+    <string name="onboard_introduction">Unlock a world of mesmerizing films</string>
+    <string name="onboard_sub_introduction">Explore movies spanning various genres, eras, and cultures</string>
+    <string name="onboard_continue">Let\'s Go</string>
+</resources>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@id/onboard_container"
+            android:scaleType="centerCrop"
+            android:src="@drawable/onboarding_cover"
+            android:importantForAccessibility="no" />
+
+        <LinearLayout
+            android:id="@+id/onboard_container"
+            android:layout_width="@dimen/onboard_max_width"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/onboarding_text_container"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/distance_default">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/onboard_heading"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/alata" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/distance_small"
+                    android:text="@string/onboard_introduction"
+                    android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/alata" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/materialTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/onboard_sub_introduction"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="?attr/colorOnBackground"
+                    app:fontFamily="@font/roboto_medium" />
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_onboard_continue"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:fontFamily="@font/noto_sans_bold"
+                android:insetBottom="0dp"
+                android:text="@string/onboard_continue"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:cornerRadius="0dp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</layout>
