@@ -48,6 +48,7 @@ dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:datastore"))
     implementation(project(":feature:onboard"))
+    implementation(project(":feature:navigator"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)

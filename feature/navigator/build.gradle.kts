@@ -2,10 +2,11 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlinKapt)
 }
 
 android {
-    namespace = "org.hxl.onboard"
+    namespace = "org.hxl.navigator"
     compileSdk = 33
 
     defaultConfig {
@@ -41,7 +42,6 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:model"))
     implementation(project(":core:domain"))
-    implementation(project(":feature:navigator"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
