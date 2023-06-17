@@ -1,16 +1,18 @@
 package org.hxl.onboarding
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import org.hxl.common.base.BaseFragment
 import org.hxl.onboard.databinding.FragmentOnboardBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class OnboardFragment: BaseFragment<FragmentOnboardBinding, ViewModel>() {
-    override val vm: ViewModel by viewModels()
+class OnboardFragment: BaseFragment<FragmentOnboardBinding, OnboardViewModel>() {
+    override val vm: OnboardViewModel by viewModel<OnboardViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
