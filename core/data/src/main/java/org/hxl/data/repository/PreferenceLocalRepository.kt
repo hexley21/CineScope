@@ -1,6 +1,6 @@
-package org.hxl.domain.repository
+package org.hxl.data.repository
 
-interface PreferenceRepository {
+interface PreferenceLocalRepository {
     suspend fun get(key: String, default: Int): Int
     suspend fun get(key: String, default: Boolean): Boolean
     suspend fun get(key: String, default: String): String
