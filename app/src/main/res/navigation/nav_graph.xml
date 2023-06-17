@@ -5,5 +5,5 @@
     app:startDestination="@id/nav_onboard">
 
     <include app:graph="@navigation/nav_onboard" />
-
+    <include app:graph="@navigation/nav_relay"/>
 </navigation>
