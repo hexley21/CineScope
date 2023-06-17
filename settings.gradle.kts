@@ -17,3 +17,5 @@ rootProject.name = "CineScope"
 include(":app")
 include(":core:common")
 include(":feature:onboard")
+include(":core:domain")
+include(":core:model")
