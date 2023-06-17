@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -20,7 +19,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
     ): View? {
         binding = getViewBinding(inflater, container)
         beforeCreatingView(savedInstanceState)
-        return binding.root;
+        return binding.root
     }
 
     protected fun showSnackBar(message: String) {
@@ -31,7 +30,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
         Snackbar.make(requireContext(), binding.root, message, length).show()
     }
 
-    open protected fun beforeCreatingView(savedInstanceState: Bundle?) {}
+    protected open fun beforeCreatingView(savedInstanceState: Bundle?) {}
 
     protected abstract fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?): VB
 
