@@ -43,6 +43,10 @@ android {
 
 dependencies {
     implementation(project(":core:common"))
+    implementation(project(":core:model"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:data"))
+    implementation(project(":core:datastore"))
     implementation(project(":feature:onboard"))
 
     implementation(libs.core.ktx)
@@ -55,6 +59,8 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.lifecycle.common)
+    implementation(libs.koin.android)
+    implementation(libs.koin.test)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
