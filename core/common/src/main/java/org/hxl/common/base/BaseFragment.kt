@@ -1,20 +1,17 @@
 package org.hxl.common.base
 
 import android.os.Bundle
-import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
+import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 
 
-abstract class BaseFragment<VB : ViewDataBinding, VM : ViewModel> : Fragment() {
-
-    protected lateinit var binding: ViewDataBinding
-    protected abstract val vm: VM
+abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
+    protected lateinit var binding: VB
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +31,7 @@ abstract class BaseFragment<VB : ViewDataBinding, VM : ViewModel> : Fragment() {
         Snackbar.make(requireContext(), binding.root, message, length).show()
     }
 
-    protected fun beforeCreatingView(savedInstanceState: Bundle?) { }
+    open protected fun beforeCreatingView(savedInstanceState: Bundle?) {}
 
     protected abstract fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?): VB
 

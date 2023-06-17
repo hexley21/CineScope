@@ -16,3 +16,9 @@ dependencyResolutionManagement {
 rootProject.name = "CineScope"
 include(":app")
 include(":core:common")
+include(":feature:onboard")
+include(":core:data")
+include(":core:domain")
+include(":core:model")
+include(":core:datastore")
+include(":feature:navigator")
