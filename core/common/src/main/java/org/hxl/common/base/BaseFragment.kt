@@ -1,20 +1,16 @@
 package org.hxl.common.base
 
 import android.os.Bundle
-import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import com.google.android.material.snackbar.Snackbar
 
 
-abstract class BaseFragment<VB : ViewDataBinding, VM : ViewModel> : Fragment() {
-
+abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
     protected lateinit var binding: ViewDataBinding
-    protected abstract val vm: VM
 
     override fun onCreateView(
         inflater: LayoutInflater,
