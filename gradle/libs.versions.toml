@@ -22,6 +22,9 @@ org-jetbrains-kotlin-jvm = "1.8.22"
 koin-android = "3.4.2"
 koin-test = "3.4.1"
 datastore-preferences = "1.1.0-alpha04"
+retrofit = "2.9.0"
+moshi-kotlin = "1.15.0"
+logging-interceptor = "5.0.0-alpha.11"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -47,6 +50,10 @@ espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib"
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin-android" }
 koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin-test" }
 androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore-preferences" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi-kotlin" }
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging-interceptor" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

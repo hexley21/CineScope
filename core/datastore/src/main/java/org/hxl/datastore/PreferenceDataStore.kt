@@ -9,8 +9,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
-import org.hxl.data.repository.PreferenceLocalRepository
+import org.hxl.data.repository.pref.PreferenceLocalRepository
 
 class PreferenceDataStore(private val context: Context): PreferenceLocalRepository {
 

@@ -1,6 +1,6 @@
 package org.hxl.data
 
-import org.hxl.data.repository.PreferenceLocalRepository
+import org.hxl.data.repository.pref.PreferenceLocalRepository
 import org.hxl.domain.repository.PreferenceRepository
 
 class PreferenceRepositoryImpl(private val preferenceLocalRepository: PreferenceLocalRepository): PreferenceRepository {

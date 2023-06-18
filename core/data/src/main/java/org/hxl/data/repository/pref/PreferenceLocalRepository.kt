@@ -1,4 +1,4 @@
-package org.hxl.data.repository
+package org.hxl.data.repository.pref
 
 interface PreferenceLocalRepository {
     suspend fun get(key: String, default: Int): Int

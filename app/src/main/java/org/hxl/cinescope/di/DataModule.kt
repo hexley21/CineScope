@@ -1,7 +1,7 @@
 package org.hxl.cinescope.di
 
 import org.hxl.data.PreferenceRepositoryImpl
-import org.hxl.data.repository.PreferenceLocalRepository
+import org.hxl.data.repository.pref.PreferenceLocalRepository
 import org.hxl.datastore.PreferenceDataStore
 import org.hxl.domain.repository.PreferenceRepository
 import org.koin.dsl.module
