@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_movies">Movies</string>
+    <string name="menu_favorites">Favorites</string>
+    <string name="menu_discover">Discover</string>
+    <string name="menu_quiz">Quizzes</string>
+    <string name="menu_settings">Settings</string>
+</resources>

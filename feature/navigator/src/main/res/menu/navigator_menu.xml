@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_movies"
+        android:enabled="true"
+        android:icon="@drawable/device_camera_video"
+        android:title="@string/menu_movies" />
+
+    <item
+        android:id="@+id/menu_favorites"
+        android:enabled="true"
+        android:icon="@drawable/heart"
+        android:title="@string/menu_favorites" />
+
+    <item
+        android:id="@+id/menu_discover"
+        android:enabled="true"
+        android:icon="@drawable/telescope_fill"
+        android:title="@string/menu_discover" />
+
+    <item
+        android:id="@+id/menu_quiz"
+        android:icon="@drawable/goal"
+        android:title="@string/menu_quiz" />
+
+    <item
+        android:id="@+id/menu_settings"
+        android:icon="@drawable/gear"
+        android:title="@string/menu_settings" />
+
+</menu>
