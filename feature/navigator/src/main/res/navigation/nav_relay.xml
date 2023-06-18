@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_relay"
     app:startDestination="@id/navigatorFragment">
-
     <fragment
         android:id="@+id/navigatorFragment"
         android:name="org.hxl.navigator.NavigatorFragment"

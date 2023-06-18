@@ -1,3 +1,5 @@
+import java.util.Properties
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.androidApplication)
@@ -17,6 +19,13 @@ android {
         versionName = "1.0-alpha.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val properties = Properties();
+        properties.load(project.rootProject.file("local.properties").inputStream())
+
+        buildConfigField("String", "API_TOKEN", "\"${properties.getProperty("API_TOKEN")}\"")
+
+
     }
 
     buildFeatures {
