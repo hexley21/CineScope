@@ -10,12 +10,13 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/onboarding_text_container"
             android:layout_alignParentTop="true">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:importantForAccessibility="no"
                 android:scaleType="centerCrop"
-                android:src="@drawable/onboarding_cover"
-                android:importantForAccessibility="no" />
+                android:src="@drawable/onboarding_cover" />
 
             <View
                 android:layout_width="match_parent"
