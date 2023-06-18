@@ -20,7 +20,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        val properties = Properties();
+        val properties = Properties()
         properties.load(project.rootProject.file("local.properties").inputStream())
 
         buildConfigField("String", "API_TOKEN", "\"${properties.getProperty("API_TOKEN")}\"")
