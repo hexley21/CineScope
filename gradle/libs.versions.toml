@@ -25,6 +25,8 @@ datastore-preferences = "1.1.0-alpha04"
 retrofit = "2.9.0"
 moshi-kotlin = "1.15.0"
 logging-interceptor = "5.0.0-alpha.11"
+mockito-core = "5.4.0"
+kotlinx-coroutines-test = "1.7.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -54,6 +56,8 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
 moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi-kotlin" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging-interceptor" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito-core" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

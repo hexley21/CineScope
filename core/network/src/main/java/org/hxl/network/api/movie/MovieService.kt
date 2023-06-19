@@ -1,11 +1,11 @@
 package org.hxl.network.api.movie
 
-import org.hxl.network.model.ListResponse
-import org.hxl.network.model.MultiSearchDTO
-import org.hxl.network.model.movie.MovieDetailedDTO
-import org.hxl.network.model.movie.MovieListItemDTO
-import org.hxl.network.model.series.SeriesDetailedDTO
-import org.hxl.network.model.series.SeriesListItemDTO
+import org.hxl.network.model.cinema.ListResponse
+import org.hxl.network.model.cinema.MultiSearchDTO
+import org.hxl.network.model.cinema.movie.MovieDetailsDTO
+import org.hxl.network.model.cinema.movie.MovieListItemDTO
+import org.hxl.network.model.cinema.series.SeriesDetailsDTO
+import org.hxl.network.model.cinema.series.SeriesListItemDTO
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -39,9 +39,9 @@ interface MovieService {
 
     @GET("/movie/{id}")
     suspend fun getMovieById(
-        @Path("id") id: String,
+        @Path("id") id: Int,
         @Query("language") language: String
-    ): MovieDetailedDTO
+    ): MovieDetailsDTO
 
 
     @GET("/tv/popular")
@@ -58,9 +58,9 @@ interface MovieService {
 
     @GET("/tv/{id}")
     suspend fun getSeriesById(
-        @Path("id") id: String,
+        @Path("id") id: Int,
         @Query("language") language: String
-    ): SeriesDetailedDTO
+    ): SeriesDetailsDTO
 
 
     @GET("/search/multi")

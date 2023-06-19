@@ -1,11 +1,11 @@
 package org.hxl.data
 
 import org.hxl.domain.repository.MovieRepository
-import org.hxl.model.movies.MultiSearch
-import org.hxl.model.movies.movie.MovieDetailed
-import org.hxl.model.movies.movie.MovieListItem
-import org.hxl.model.movies.series.SeriesDetailed
-import org.hxl.model.movies.series.SeriesListItem
+import org.hxl.model.cinema.MultiSearch
+import org.hxl.model.cinema.movie.MovieDetails
+import org.hxl.model.cinema.movie.MovieListItem
+import org.hxl.model.cinema.series.SeriesDetails
+import org.hxl.model.cinema.series.SeriesListItem
 
 class MovieRepositoryImpl: MovieRepository {
     override suspend fun getPopularMovies(
@@ -32,7 +32,7 @@ class MovieRepositoryImpl: MovieRepository {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getMovieById(id: String, language: String): MovieDetailed {
+    override suspend fun getMovieById(id: Int, language: String): MovieDetails {
         TODO("Not yet implemented")
     }
 
@@ -44,7 +44,7 @@ class MovieRepositoryImpl: MovieRepository {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getSeriesById(id: String, language: String): SeriesDetailed {
+    override suspend fun getSeriesById(id: Int, language: String): SeriesDetails {
         TODO("Not yet implemented")
     }
 

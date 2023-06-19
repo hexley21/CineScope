@@ -1,15 +1,15 @@
 package org.hxl.network
 
 import org.hxl.data.repository.movie.MovieRepositoryRemote
-import org.hxl.model.movies.MultiSearch
-import org.hxl.model.movies.movie.MovieDetailed
-import org.hxl.model.movies.movie.MovieListItem
-import org.hxl.model.movies.series.SeriesDetailed
-import org.hxl.model.movies.series.SeriesListItem
+import org.hxl.model.cinema.MultiSearch
+import org.hxl.model.cinema.movie.MovieDetails
+import org.hxl.model.cinema.movie.MovieListItem
+import org.hxl.model.cinema.series.SeriesDetails
+import org.hxl.model.cinema.series.SeriesListItem
 import org.hxl.network.api.movie.MovieService
-import org.hxl.network.mapper.mapToModel
-import org.hxl.network.mapper.movie.mapToModel
-import org.hxl.network.mapper.series.mapToModel
+import org.hxl.network.mapper.cinema.mapToModel
+import org.hxl.network.mapper.cinema.movie.mapToModel
+import org.hxl.network.mapper.cinema.series.mapToModel
 
 class MovieRepositoryRemoteImpl(private val movieService: MovieService): MovieRepositoryRemote {
     override suspend fun getPopularMovies(
@@ -36,7 +36,7 @@ class MovieRepositoryRemoteImpl(private val movieService: MovieService): MovieRe
         return movieService.getTopMovies(language, page).results.map { it.mapToModel() }
     }
 
-    override suspend fun getMovieById(id: String, language: String): MovieDetailed {
+    override suspend fun getMovieById(id: Int, language: String): MovieDetails {
         return movieService.getMovieById(id, language).mapToModel()
     }
 
@@ -48,7 +48,7 @@ class MovieRepositoryRemoteImpl(private val movieService: MovieService): MovieRe
         return movieService.getTopSeries(language, page).results.map { it.mapToModel() }
     }
 
-    override suspend fun getSeriesById(id: String, language: String): SeriesDetailed {
+    override suspend fun getSeriesById(id: Int, language: String): SeriesDetails {
         return movieService.getSeriesById(id, language).mapToModel()
     }
 
