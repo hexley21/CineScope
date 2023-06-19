@@ -67,7 +67,7 @@ interface MovieService {
     suspend fun searchMulti(
         @Query("query") query: String,
         @Query("include_adult") includeAdult: Boolean,
-        @Query("language")language: String,
-        @Query("page")page: Int
+        @Query("language") language: String,
+        @Query("page") page: Int
     ): ListResponse<MultiSearchDTO>
 }
