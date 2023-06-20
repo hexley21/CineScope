@@ -1,17 +1,17 @@
 package org.hxl.network.mapper.cinema
 
 import junit.framework.TestCase.assertEquals
-import org.hxl.model.cinema.MultiSearch
+import org.hxl.model.cinema.MultiSearchItem
 import org.hxl.network.mapper.MapperConstants.IMG_LOCATION
-import org.hxl.network.model.cinema.MultiSearchDTO
+import org.hxl.network.model.cinema.MultiSearchItemDTO
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 @RunWith(JUnit4::class)
-class MultiSearchDTOMapperTest {
+class MultiSearchItemDTOMapperTest {
 
-    private val fakeDTO = MultiSearchDTO(
+    private val fakeDTO = MultiSearchItemDTO(
         adult = true,
         backdropPath = "/backdrop.jpg",
         id = 123,
@@ -33,7 +33,7 @@ class MultiSearchDTOMapperTest {
         video = false
     )
 
-    private val fakeModel = MultiSearch(
+    private val fakeModel = MultiSearchItem(
         adult = true,
         backdropPath = "${IMG_LOCATION}/backdrop.jpg",
         id = 123,

@@ -1,23 +1,28 @@
 package org.hxl.data
 
+import org.hxl.data.repository.movie.CinemaRepositoryLocal
 import org.hxl.domain.repository.CinemaRepository
-import org.hxl.model.cinema.MultiSearch
+import org.hxl.model.cinema.MultiSearchItem
 import org.hxl.model.cinema.movie.MovieDetails
 import org.hxl.model.cinema.movie.MovieListItem
 import org.hxl.model.cinema.series.SeriesDetails
 import org.hxl.model.cinema.series.SeriesListItem
 
-class CinemaRepositoryImpl: CinemaRepository {
+class CinemaRepositoryImpl(
+    private val remote: CinemaRepository,
+    private val local: CinemaRepositoryLocal
+): CinemaRepository {
+
     override suspend fun getPopularMovies(
         language: String,
         page: Int,
         region: String
     ): List<MovieListItem> {
-        TODO("Not yet implemented")
+        return remote.getPopularMovies(language, page, region)
     }
 
     override suspend fun getPopularMovies(language: String, page: Int): List<MovieListItem> {
-        TODO("Not yet implemented")
+        return remote.getPopularMovies(language, page)
     }
 
     override suspend fun getTopMovies(
@@ -25,27 +30,27 @@ class CinemaRepositoryImpl: CinemaRepository {
         page: Int,
         region: String
     ): List<MovieListItem> {
-        TODO("Not yet implemented")
+        return remote.getTopMovies(language, page, region)
     }
 
     override suspend fun getTopMovies(language: String, page: Int): List<MovieListItem> {
-        TODO("Not yet implemented")
+        return remote.getTopMovies(language, page)
     }
 
     override suspend fun getMovieById(id: Int, language: String): MovieDetails {
-        TODO("Not yet implemented")
+        return remote.getMovieById(id, language)
     }
 
     override suspend fun getPopularSeries(language: String, page: Int): List<SeriesListItem> {
-        TODO("Not yet implemented")
+        return remote.getPopularSeries(language, page)
     }
 
     override suspend fun getTopSeries(language: String, page: Int): List<SeriesListItem> {
-        TODO("Not yet implemented")
+        return remote.getTopSeries(language, page)
     }
 
     override suspend fun getSeriesById(id: Int, language: String): SeriesDetails {
-        TODO("Not yet implemented")
+        return remote.getSeriesById(id, language)
     }
 
     override suspend fun searchMulti(
@@ -53,7 +58,7 @@ class CinemaRepositoryImpl: CinemaRepository {
         includeAdult: Boolean,
         language: String,
         page: Int
-    ): List<MultiSearch> {
-        TODO("Not yet implemented")
+    ): List<MultiSearchItem> {
+        return remote.searchMulti(query, includeAdult, language, page)
     }
 }

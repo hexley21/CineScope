@@ -1,6 +1,6 @@
 package org.hxl.data.repository.movie
 
-import org.hxl.model.cinema.MultiSearch
+import org.hxl.model.cinema.MultiSearchItem
 import org.hxl.model.cinema.movie.MovieDetails
 import org.hxl.model.cinema.movie.MovieListItem
 import org.hxl.model.cinema.series.SeriesDetails
@@ -17,5 +17,5 @@ interface CinemaRepositoryRemote {
     suspend fun getTopSeries(language: String, page: Int): List<SeriesListItem>
     suspend fun getSeriesById(id: Int, language: String): SeriesDetails
 
-    suspend fun searchMulti(query: String, includeAdult: Boolean, language: String, page: Int): List<MultiSearch>
+    suspend fun searchMulti(query: String, includeAdult: Boolean, language: String, page: Int): List<MultiSearchItem>
 }

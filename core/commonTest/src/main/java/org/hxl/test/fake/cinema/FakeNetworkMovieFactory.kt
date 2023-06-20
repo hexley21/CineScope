@@ -1,7 +1,7 @@
 package org.hxl.test.fake.cinema
 
 import org.hxl.network.model.cinema.ListResponse
-import org.hxl.network.model.cinema.MultiSearchDTO
+import org.hxl.network.model.cinema.MultiSearchItemDTO
 import org.hxl.network.model.cinema.detail.GenreDTO
 import org.hxl.network.model.cinema.detail.ProductionCompanyDTO
 import org.hxl.network.model.cinema.detail.ProductionCountryDTO
@@ -27,12 +27,12 @@ object FakeNetworkMovieFactory {
         return ListResponse(PAGES, List(size) { getSeriesListItemDTO(genres, countries) }, PAGES, size)
     }
 
-    fun getMultiSearchListResponse(size: Int, genres: Int, countries: Int): ListResponse<MultiSearchDTO> {
+    fun getMultiSearchListResponse(size: Int, genres: Int, countries: Int): ListResponse<MultiSearchItemDTO> {
         return ListResponse(PAGES, List(size) { getMultiSearchDTO(genres, countries) }, PAGES, size)
     }
 
-    private fun getMultiSearchDTO(genres: Int, countries: Int): MultiSearchDTO {
-        return MultiSearchDTO(
+    private fun getMultiSearchDTO(genres: Int, countries: Int): MultiSearchItemDTO {
+        return MultiSearchItemDTO(
             Random.nextBoolean(),
             randomUUID().toString(),
             Random.nextInt(),

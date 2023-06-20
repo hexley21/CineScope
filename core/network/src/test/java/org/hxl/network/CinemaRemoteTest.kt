@@ -3,14 +3,14 @@ package org.hxl.network
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotNull
 import kotlinx.coroutines.test.runTest
-import org.hxl.model.cinema.MultiSearch
+import org.hxl.model.cinema.MultiSearchItem
 import org.hxl.model.cinema.movie.MovieDetails
 import org.hxl.model.cinema.movie.MovieListItem
 import org.hxl.model.cinema.series.SeriesDetails
 import org.hxl.model.cinema.series.SeriesListItem
 import org.hxl.network.api.cinema.CinemaService
 import org.hxl.network.model.cinema.ListResponse
-import org.hxl.network.model.cinema.MultiSearchDTO
+import org.hxl.network.model.cinema.MultiSearchItemDTO
 import org.hxl.network.model.cinema.movie.MovieDetailsDTO
 import org.hxl.network.model.cinema.movie.MovieListItemDTO
 import org.hxl.network.model.cinema.series.SeriesDetailsDTO
@@ -161,16 +161,16 @@ class CinemaRemoteTest{
     @Test
     fun searchMulti() = runTest {
         // Arrange
-        val fakeMultiSearch: ListResponse<MultiSearchDTO> = FakeNetworkMovieFactory.getMultiSearchListResponse(
+        val fakeMultiSearch: ListResponse<MultiSearchItemDTO> = FakeNetworkMovieFactory.getMultiSearchListResponse(
             SIZE, SIZE, SIZE)
         `when`(service.searchMulti(anyString(), anyBoolean(), anyString(), anyInt())).thenReturn(fakeMultiSearch)
         // Act
-        val multiSearch: List<MultiSearch> = repository.searchMulti(QUERY, INCLUDE_ADULT, LANGUAGE, PAGES)
+        val multiSearchItems: List<MultiSearchItem> = repository.searchMulti(QUERY, INCLUDE_ADULT, LANGUAGE, PAGES)
         // Assert
-        assertNotNull(multiSearch)
-        assertEquals(SIZE, multiSearch.size)
-        multiSearch.forEach { assertEquals(SIZE, it.genreIds?.size) }
-        multiSearch.forEach { assertEquals(SIZE, it.originCountry?.size) }
+        assertNotNull(multiSearchItems)
+        assertEquals(SIZE, multiSearchItems.size)
+        multiSearchItems.forEach { assertEquals(SIZE, it.genreIds?.size) }
+        multiSearchItems.forEach { assertEquals(SIZE, it.originCountry?.size) }
         verify(service).searchMulti(anyString(), anyBoolean(), anyString(), anyInt())
     }
 }

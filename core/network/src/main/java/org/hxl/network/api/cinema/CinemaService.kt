@@ -1,7 +1,7 @@
 package org.hxl.network.api.cinema
 
 import org.hxl.network.model.cinema.ListResponse
-import org.hxl.network.model.cinema.MultiSearchDTO
+import org.hxl.network.model.cinema.MultiSearchItemDTO
 import org.hxl.network.model.cinema.movie.MovieDetailsDTO
 import org.hxl.network.model.cinema.movie.MovieListItemDTO
 import org.hxl.network.model.cinema.series.SeriesDetailsDTO
@@ -69,5 +69,5 @@ interface CinemaService {
         @Query("include_adult") includeAdult: Boolean,
         @Query("language") language: String,
         @Query("page") page: Int
-    ): ListResponse<MultiSearchDTO>
+    ): ListResponse<MultiSearchItemDTO>
 }

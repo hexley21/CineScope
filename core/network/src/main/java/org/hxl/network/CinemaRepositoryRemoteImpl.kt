@@ -1,7 +1,7 @@
 package org.hxl.network
 
 import org.hxl.data.repository.movie.CinemaRepositoryRemote
-import org.hxl.model.cinema.MultiSearch
+import org.hxl.model.cinema.MultiSearchItem
 import org.hxl.model.cinema.movie.MovieDetails
 import org.hxl.model.cinema.movie.MovieListItem
 import org.hxl.model.cinema.series.SeriesDetails
@@ -57,7 +57,7 @@ class CinemaRepositoryRemoteImpl(private val cinemaService: CinemaService): Cine
         includeAdult: Boolean,
         language: String,
         page: Int
-    ): List<MultiSearch> {
+    ): List<MultiSearchItem> {
         return cinemaService.searchMulti(query, includeAdult, language, page).results.map { it.mapToModel() }
     }
 }

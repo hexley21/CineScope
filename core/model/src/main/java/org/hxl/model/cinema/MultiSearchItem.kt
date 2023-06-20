@@ -1,6 +1,6 @@
 package org.hxl.model.cinema
 
-data class MultiSearch(
+data class MultiSearchItem(
     val adult: Boolean?,
     val backdropPath: String?,
     val id: Int?,
