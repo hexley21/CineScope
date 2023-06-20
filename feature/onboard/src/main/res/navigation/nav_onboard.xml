@@ -10,17 +10,8 @@
         android:label="OnboardingFragment" >
         <action
             android:id="@+id/onboard_to_navigator"
-            app:destination="@id/navigatorFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@id/nav_onboard"
-            app:popUpToInclusive="true" />
+            app:destination="@id/nav_root" />
     </fragment>
-    <fragment
-        android:id="@+id/navigatorFragment"
-        android:name="org.hxl.navigator.NavigatorFragment"
-        android:label="NavigatorFragment" />
 
+    <include app:graph="@navigation/nav_root" />
 </navigation>

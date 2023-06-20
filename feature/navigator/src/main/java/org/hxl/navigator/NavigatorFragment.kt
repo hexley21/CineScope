@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationBarView
 import org.hxl.common.base.BaseFragment
 import org.hxl.navigator.databinding.FragmentNavigatorBinding
@@ -22,6 +23,7 @@ class NavigatorFragment: BaseFragment<FragmentNavigatorBinding>() {
         binding.viewNavigator?.setNavigationItemSelectedListener { onMenuItemSelect(it.itemId)}
     }
 
+    private fun NavigatorFragment.findMainNavController() = NavHostFragment.findNavController(this)
     private fun NavigatorFragment.findNavController() = Navigation.findNavController(binding.navigatorContainer)
 
     private fun onMenuItemSelect(id: Int): Boolean {
