@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "org.hxl.movies"
+    namespace = "org.hxl.cinema"
     compileSdk = 33
 
     defaultConfig {
@@ -34,10 +34,20 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:common"))
+    implementation(project(":core:model"))
+    implementation(project(":core:domain"))
+    implementation(project(":feature:navigator"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation(libs.koin.android)
+    implementation(libs.androidx.lifecycle.common)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

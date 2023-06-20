@@ -20,16 +20,18 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        fun addApiToken(token: String) {
+            buildConfigField("String", "API_TOKEN", "\"${token}\"")
+        }
+
         if (project.rootProject.file("local.properties").exists()) {
             val properties = Properties()
             properties.load(project.rootProject.file("local.properties").inputStream())
-            buildConfigField("String", "API_TOKEN", "\"${properties.getProperty("API_TOKEN")}\"")
+            addApiToken(properties.getProperty("API_TOKEN"))
         }
         else {
-            buildConfigField("String", "API_TOKEN", "\"dummytoken\"")
+            addApiToken("dummyToken")
         }
-
-
     }
 
     buildFeatures {
@@ -59,7 +61,10 @@ dependencies {
     implementation(project(":core:model"))
     implementation(project(":core:domain"))
     implementation(project(":core:data"))
+
     implementation(project(":core:datastore"))
+    implementation(project(":core:network"))
+
     implementation(project(":feature:onboard"))
     implementation(project(":feature:navigator"))
 

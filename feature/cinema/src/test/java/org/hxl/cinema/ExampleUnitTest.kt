@@ -1,4 +1,4 @@
-package org.hxl.movies
+package org.hxl.cinema
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
