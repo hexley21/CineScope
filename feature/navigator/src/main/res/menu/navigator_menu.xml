@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/menu_movies"
+        android:id="@+id/menu_cinema"
         android:enabled="true"
         android:icon="@drawable/device_camera_video"
-        android:title="@string/menu_movies" />
+        android:title="@string/menu_cinema" />
 
     <item
         android:id="@+id/menu_favorites"

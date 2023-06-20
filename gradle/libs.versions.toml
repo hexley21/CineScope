@@ -27,6 +27,7 @@ moshi-kotlin = "1.15.0"
 logging-interceptor = "5.0.0-alpha.11"
 mockito-core = "5.4.0"
 kotlinx-coroutines-test = "1.7.1"
+slidingpanelayout = "1.2.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -58,6 +59,7 @@ moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.re
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging-interceptor" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito-core" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
+androidx-slidingpanelayout = { group = "androidx.slidingpanelayout", name = "slidingpanelayout", version.ref = "slidingpanelayout" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

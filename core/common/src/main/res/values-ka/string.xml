@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movies">ფილმები</string>
+    <string name="series">სერიალები</string>
+
+    <string name="search">ძიება</string>
+</resources>

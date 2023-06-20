@@ -30,6 +30,7 @@
             android:layout_height="match_parent"
             android:layout_above="@id/bottom_navigation"
             app:defaultNavHost="false"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             app:navGraph="@navigation/nav_relay" />
     </RelativeLayout>
 </layout>

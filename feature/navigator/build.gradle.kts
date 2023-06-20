@@ -43,6 +43,8 @@ dependencies {
     implementation(project(":core:model"))
     implementation(project(":core:domain"))
 
+    implementation(project(":feature:cinema"))
+
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)

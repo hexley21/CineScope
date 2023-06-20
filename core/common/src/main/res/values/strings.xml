@@ -1,4 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CineScope</string>
-    <string name="title_onboarding">Onboarding</string>
+    <string name="app_name" translatable="false">CineScope</string>
+
+    <string name="movies">Movies</string>
+    <string name="series">Series</string>
+
+    <string name="search">Search</string>
 </resources>

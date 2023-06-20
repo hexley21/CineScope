@@ -26,6 +26,7 @@
             android:layout_toEndOf="@id/rail_navigator"
             android:layout_alignParentEnd="true"
             app:defaultNavHost="false"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             app:navGraph="@navigation/nav_relay" />
     </RelativeLayout>
 </layout>

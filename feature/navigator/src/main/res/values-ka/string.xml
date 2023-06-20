@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_cinema">თეატრი</string>
+    <string name="menu_favorites">შენახულები</string>
+    <string name="menu_discover">აღმოჩენა</string>
+    <string name="menu_quiz">ქუიზები</string>
+    <string name="menu_settings">პარამეტრები</string>
+</resources>
