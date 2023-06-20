@@ -2,9 +2,8 @@ package org.hxl.onboarding
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.Deferred
-import org.hxl.domain.useCases.GetOnboardSkip
-import org.hxl.domain.useCases.SetOnboardSkip
+import org.hxl.domain.useCases.prefs.GetOnboardSkip
+import org.hxl.domain.useCases.prefs.SetOnboardSkip
 
 class OnboardViewModel(
     private val getOnboardSkip: GetOnboardSkip,

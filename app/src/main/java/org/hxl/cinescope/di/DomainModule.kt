@@ -1,7 +1,7 @@
 package org.hxl.cinescope.di
 
-import org.hxl.domain.useCases.GetOnboardSkip
-import org.hxl.domain.useCases.SetOnboardSkip
+import org.hxl.domain.useCases.prefs.GetOnboardSkip
+import org.hxl.domain.useCases.prefs.SetOnboardSkip
 import org.koin.dsl.module
 
 val domainModule = module {

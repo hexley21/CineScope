@@ -1,23 +1,27 @@
-package org.hxl.data
+package org.hxl.network
 
-import org.hxl.domain.repository.MovieRepository
+import org.hxl.data.repository.movie.CinemaRepositoryRemote
 import org.hxl.model.cinema.MultiSearch
 import org.hxl.model.cinema.movie.MovieDetails
 import org.hxl.model.cinema.movie.MovieListItem
 import org.hxl.model.cinema.series.SeriesDetails
 import org.hxl.model.cinema.series.SeriesListItem
+import org.hxl.network.api.cinema.CinemaService
+import org.hxl.network.mapper.cinema.mapToModel
+import org.hxl.network.mapper.cinema.movie.mapToModel
+import org.hxl.network.mapper.cinema.series.mapToModel
 
-class MovieRepositoryImpl: MovieRepository {
+class CinemaRepositoryRemoteImpl(private val cinemaService: CinemaService): CinemaRepositoryRemote {
     override suspend fun getPopularMovies(
         language: String,
         page: Int,
         region: String
     ): List<MovieListItem> {
-        TODO("Not yet implemented")
+        return cinemaService.getPopularMovies(language, page, region).results.map { it.mapToModel() }
     }
 
     override suspend fun getPopularMovies(language: String, page: Int): List<MovieListItem> {
-        TODO("Not yet implemented")
+        return cinemaService.getPopularMovies(language, page).results.map { it.mapToModel() }
     }
 
     override suspend fun getTopMovies(
@@ -25,27 +29,27 @@ class MovieRepositoryImpl: MovieRepository {
         page: Int,
         region: String
     ): List<MovieListItem> {
-        TODO("Not yet implemented")
+        return cinemaService.getTopMovies(language, page, region).results.map { it.mapToModel() }
     }
 
     override suspend fun getTopMovies(language: String, page: Int): List<MovieListItem> {
-        TODO("Not yet implemented")
+        return cinemaService.getTopMovies(language, page).results.map { it.mapToModel() }
     }
 
     override suspend fun getMovieById(id: Int, language: String): MovieDetails {
-        TODO("Not yet implemented")
+        return cinemaService.getMovieById(id, language).mapToModel()
     }
 
     override suspend fun getPopularSeries(language: String, page: Int): List<SeriesListItem> {
-        TODO("Not yet implemented")
+        return cinemaService.getPopularSeries(language, page).results.map { it.mapToModel() }
     }
 
     override suspend fun getTopSeries(language: String, page: Int): List<SeriesListItem> {
-        TODO("Not yet implemented")
+        return cinemaService.getTopSeries(language, page).results.map { it.mapToModel() }
     }
 
     override suspend fun getSeriesById(id: Int, language: String): SeriesDetails {
-        TODO("Not yet implemented")
+        return cinemaService.getSeriesById(id, language).mapToModel()
     }
 
     override suspend fun searchMulti(
@@ -54,6 +58,6 @@ class MovieRepositoryImpl: MovieRepository {
         language: String,
         page: Int
     ): List<MultiSearch> {
-        TODO("Not yet implemented")
+        return cinemaService.searchMulti(query, includeAdult, language, page).results.map { it.mapToModel() }
     }
 }

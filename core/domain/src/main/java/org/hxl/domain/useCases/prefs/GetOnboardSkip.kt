@@ -1,4 +1,4 @@
-package org.hxl.domain.useCases
+package org.hxl.domain.useCases.prefs
 
 import org.hxl.domain.repository.PreferenceRepository
 import org.hxl.model.PrefKeys

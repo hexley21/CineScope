@@ -8,7 +8,7 @@ import org.hxl.model.cinema.movie.MovieDetails
 import org.hxl.model.cinema.movie.MovieListItem
 import org.hxl.model.cinema.series.SeriesDetails
 import org.hxl.model.cinema.series.SeriesListItem
-import org.hxl.network.api.movie.MovieService
+import org.hxl.network.api.cinema.CinemaService
 import org.hxl.network.model.cinema.ListResponse
 import org.hxl.network.model.cinema.MultiSearchDTO
 import org.hxl.network.model.cinema.movie.MovieDetailsDTO
@@ -34,13 +34,13 @@ import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class MovieRemoteTest{
+class CinemaRemoteTest{
 
     @Mock
-    private lateinit var service: MovieService
+    private lateinit var service: CinemaService
 
     @InjectMocks
-    private lateinit var repository: MovieRepositoryRemoteImpl
+    private lateinit var repository: CinemaRepositoryRemoteImpl
 
     @Test
     fun `get popular movies by 3 returns valid model`() = runTest {

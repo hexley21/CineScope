@@ -1,4 +1,4 @@
-package org.hxl.network.api.movie
+package org.hxl.network.api.cinema
 
 import org.hxl.network.model.cinema.ListResponse
 import org.hxl.network.model.cinema.MultiSearchDTO
@@ -10,7 +10,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface MovieService {
+interface CinemaService {
     @GET("/movie/popular")
     suspend fun getPopularMovies(
         @Query("language") language: String,

@@ -1,4 +1,4 @@
-package org.hxl.data.repository.movie
+package org.hxl.domain.repository
 
 import org.hxl.model.cinema.MultiSearch
 import org.hxl.model.cinema.movie.MovieDetails
@@ -6,7 +6,7 @@ import org.hxl.model.cinema.movie.MovieListItem
 import org.hxl.model.cinema.series.SeriesDetails
 import org.hxl.model.cinema.series.SeriesListItem
 
-interface MovieRepositoryRemote {
+interface CinemaRepository {
     suspend fun getPopularMovies(language: String, page: Int, region: String): List<MovieListItem>
     suspend fun getPopularMovies(language: String, page: Int): List<MovieListItem>
     suspend fun getTopMovies(language: String, page: Int, region: String): List<MovieListItem>
