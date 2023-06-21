@@ -27,8 +27,8 @@ class CineScopeApp: Application() {
                 listOf(
                     dataModule,
                     domainModule,
-                    onboardModule,
                     networkModule,
+                    onboardModule,
                     cinemaModule
                 ))
         }

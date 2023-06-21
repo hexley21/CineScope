@@ -1,5 +1,6 @@
 package org.hxl.data
 
+import org.hxl.data.repository.movie.CinemaRepositoryRemote
 import org.hxl.domain.repository.CinemaRepository
 import org.hxl.model.cinema.MultiSearchItem
 import org.hxl.model.cinema.movie.MovieDetails
@@ -8,7 +9,7 @@ import org.hxl.model.cinema.series.SeriesDetails
 import org.hxl.model.cinema.series.SeriesListItem
 
 class CinemaRepositoryImpl(
-    private val remote: CinemaRepository,
+    private val remote: CinemaRepositoryRemote,
 ): CinemaRepository {
 
     override suspend fun getPopularMovies(

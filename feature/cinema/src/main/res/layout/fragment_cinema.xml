@@ -5,29 +5,30 @@
         android:id="@+id/sliding_pane_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_height="match_parent"
             android:layout_width="550dp"
+            android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="?attr/colorSurface"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/coin_details_pager"
+                android:id="@+id/cinema_list_pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layout_scrollFlags="scroll|snap"
-                    android:background="?attr/backgroundColor">
+                    android:background="?attr/backgroundColor"
+                    android:orientation="vertical"
+                    app:layout_scrollFlags="scroll|snap">
 
                     <com.google.android.material.search.SearchBar
                         android:id="@+id/search_bar"
@@ -39,7 +40,7 @@
                         app:defaultMarginsEnabled="false" />
 
                     <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/coin_details_tabs"
+                        android:id="@+id/cinema_list_tabs"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="?attr/backgroundColor"

@@ -11,59 +11,59 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface CinemaService {
-    @GET("/movie/popular")
+    @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("language") language: String,
         @Query("page") page: Int,
         @Query("region") region: String
     ): ListResponse<MovieListItemDTO>
 
-    @GET("/movie/popular")
+    @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("language") language: String,
         @Query("page") page: Int
     ): ListResponse<MovieListItemDTO>
 
-    @GET("/movie/top_rated")
+    @GET("movie/top_rated")
     suspend fun getTopMovies(
         @Query("language") language: String,
         @Query("page") page: Int,
         @Query("region") region: String
     ): ListResponse<MovieListItemDTO>
 
-    @GET("/movie/top_rated")
+    @GET("movie/top_rated")
     suspend fun getTopMovies(
         @Query("language") language: String,
         @Query("page") page: Int,
     ): ListResponse<MovieListItemDTO>
 
-    @GET("/movie/{id}")
+    @GET("movie/{id}")
     suspend fun getMovieById(
         @Path("id") id: Int,
         @Query("language") language: String
     ): MovieDetailsDTO
 
 
-    @GET("/tv/popular")
+    @GET("tv/popular")
     suspend fun getPopularSeries(
         @Query("language") language: String,
         @Query("page") page: Int,
     ): ListResponse<SeriesListItemDTO>
 
-    @GET("/movie/top_rated")
+    @GET("movie/top_rated")
     suspend fun getTopSeries(
         @Query("language") language: String,
         @Query("page") page: Int,
     ): ListResponse<SeriesListItemDTO>
 
-    @GET("/tv/{id}")
+    @GET("tv/{id}")
     suspend fun getSeriesById(
         @Path("id") id: Int,
         @Query("language") language: String
     ): SeriesDetailsDTO
 
 
-    @GET("/search/multi")
+    @GET("search/multi")
     suspend fun searchMulti(
         @Query("query") query: String,
         @Query("include_adult") includeAdult: Boolean,

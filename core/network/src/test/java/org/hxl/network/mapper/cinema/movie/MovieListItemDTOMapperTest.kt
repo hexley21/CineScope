@@ -2,7 +2,7 @@ package org.hxl.network.mapper.cinema.movie
 
 import junit.framework.TestCase.assertEquals
 import org.hxl.model.cinema.movie.MovieListItem
-import org.hxl.network.mapper.MapperConstants.IMG_LOCATION
+import org.hxl.network.mapper.MapperConstants.IMG_LOCATION300
 import org.hxl.network.model.cinema.movie.MovieListItemDTO
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -30,14 +30,14 @@ class MovieListItemDTOMapperTest {
 
     private val fakeModel = MovieListItem(
         adult = true,
-        backdropPath = "${IMG_LOCATION}/backdrop.png",
+        backdropPath = "${IMG_LOCATION300}/backdrop.png",
         genreIds = listOf(1, 2, 3),
         id = 123,
         originalLanguage = "en",
         originalTitle = "Original Title",
         overview = "Movie overview",
         popularity = 7.8,
-        posterPath = "${IMG_LOCATION}/poster.png",
+        posterPath = "${IMG_LOCATION300}/poster.png",
         releaseDate = "2022-01-01",
         title = "Movie Title",
         video = false,

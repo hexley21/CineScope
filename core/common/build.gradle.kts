@@ -39,8 +39,11 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:model"))
+
     implementation(libs.core.ktx)
     implementation(libs.material)
     implementation(libs.androidx.lifecycle.common)
     implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.paging.runtime)
 }

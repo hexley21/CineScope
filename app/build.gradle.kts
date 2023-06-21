@@ -67,6 +67,7 @@ dependencies {
 
     implementation(project(":feature:onboard"))
     implementation(project(":feature:navigator"))
+    implementation(project(":feature:cinema"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
@@ -78,6 +79,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.lifecycle.common)
+    implementation(libs.glide)
     implementation(libs.koin.android)
     implementation(libs.koin.test)
 

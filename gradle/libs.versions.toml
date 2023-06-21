@@ -28,6 +28,8 @@ logging-interceptor = "5.0.0-alpha.11"
 mockito-core = "5.4.0"
 kotlinx-coroutines-test = "1.7.1"
 slidingpanelayout = "1.2.0"
+glide = "4.15.1"
+paging-runtime = "3.1.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -60,6 +62,8 @@ logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-intercep
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito-core" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
 androidx-slidingpanelayout = { group = "androidx.slidingpanelayout", name = "slidingpanelayout", version.ref = "slidingpanelayout" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging-runtime" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
