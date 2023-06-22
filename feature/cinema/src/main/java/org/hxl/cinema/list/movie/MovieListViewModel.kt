@@ -20,4 +20,11 @@ class MovieListViewModel(
         }
     }.flow.cachedIn(viewModelScope)
 
+    val topMoviesFlow = Pager(
+        PagingConfig(pageSize = 20)
+    ){
+        MovieListItemPaging {
+            getTopMovies.invoke("en-US", it)
+        }
+    }.flow.cachedIn(viewModelScope)
 }
