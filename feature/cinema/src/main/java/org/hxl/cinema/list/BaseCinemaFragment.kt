@@ -37,6 +37,10 @@ abstract class BaseCinemaFragment<T: Any, VM: BaseCinemaVM<T>>: BaseFragmentVM<F
                 listAdapter.submitData(it)
             }
         }
+
+        binding.floatingActionButton.setOnClickListener {
+            binding.rvCinemaList.smoothScrollToPosition(0)
+        }
     }
 
     fun refresh() {

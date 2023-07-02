@@ -28,7 +28,7 @@
                     android:layout_height="match_parent"
                     android:background="?attr/backgroundColor"
                     android:orientation="vertical"
-                    app:layout_scrollFlags="scroll|snap">
+                    app:layout_scrollFlags="scroll|enterAlways|snap">
 
                     <com.google.android.material.search.SearchBar
                         android:id="@+id/search_bar"
@@ -45,8 +45,7 @@
                         android:id="@+id/cinema_list_tabs"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="?attr/backgroundColor"
-                        app:layout_scrollFlags="scroll|snap">
+                        android:background="?attr/backgroundColor">
 
                         <com.google.android.material.tabs.TabItem
                             android:layout_width="wrap_content"
