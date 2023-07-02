@@ -7,8 +7,7 @@ import org.koin.dsl.module
 val onboardModule = module {
     viewModel<OnboardViewModel> {
         OnboardViewModel(
-            getOnboardSkip = get(),
-            setOnboardSkip = get()
+            getOnboardSkip = get()
         )
     }
 }

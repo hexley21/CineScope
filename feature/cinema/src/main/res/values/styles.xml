@@ -5,4 +5,14 @@
             @style/ShapeAppearance.Material3.Corner.None
         </item>
     </style>
+
+    <style name="ChoiceRadio">
+        <item name="android:drawablePadding">@dimen/distance_large</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">@dimen/distance_default</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.TitleMedium</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableEnd">?android:attr/listChoiceIndicatorSingle</item>
+    </style>
 </resources>

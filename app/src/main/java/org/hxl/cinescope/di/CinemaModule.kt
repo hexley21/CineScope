@@ -4,6 +4,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import org.hxl.cinema.dialog.CinemaResultVM
 import org.hxl.cinema.list.movie.MovieVM
 import org.hxl.cinema.list.series.SeriesVM
 import org.hxl.cinescope.R
@@ -15,12 +16,19 @@ import org.koin.dsl.module
 val cinemaModule = module {
     viewModel<MovieVM> {
         MovieVM(
-            getMovies = get()
+            getMovies = get(),
+            cinemaResult = get()
         )
     }
     viewModel<SeriesVM> {
         SeriesVM(
-            getSeries = get()
+            getSeries = get(),
+            cinemaResult = get()
+        )
+    }
+    viewModel<CinemaResultVM> {
+        CinemaResultVM(
+            cinemaResult = get()
         )
     }
 

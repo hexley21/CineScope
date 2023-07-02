@@ -7,6 +7,14 @@
     <fragment
         android:id="@+id/cinemaFragment"
         android:name="org.hxl.cinema.CinemaFragment"
-        android:label="CinemaFragment" />
+        android:label="CinemaFragment" >
+        <action
+            android:id="@+id/openDialogCinemaResult"
+            app:destination="@id/dialogCinemaResult" />
+    </fragment>
+    <dialog
+        android:id="@+id/dialogCinemaResult"
+        android:name="org.hxl.cinema.dialog.CinemaResultDialog"
+        android:label="DialogCinemaResult" />
 
 </navigation>

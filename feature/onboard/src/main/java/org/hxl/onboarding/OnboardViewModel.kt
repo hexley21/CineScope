@@ -2,12 +2,10 @@ package org.hxl.onboarding
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import org.hxl.domain.useCases.prefs.GetOnboardSkip
-import org.hxl.domain.useCases.prefs.SetOnboardSkip
+import org.hxl.domain.useCases.prefs.OnboardSkipUseCase
 
 class OnboardViewModel(
-    private val getOnboardSkip: GetOnboardSkip,
-    private val setOnboardSkip: SetOnboardSkip
+    private val getOnboardSkip: OnboardSkipUseCase
 ): ViewModel() {
 
     companion object {
@@ -15,11 +13,11 @@ class OnboardViewModel(
     }
 
     suspend fun isSkip(): Boolean {
-        return getOnboardSkip.invoke()
+        return getOnboardSkip.get()
     }
 
     suspend fun enableSkip() {
-        setOnboardSkip.invoke(true)
+        getOnboardSkip.set(true)
         Log.d(TAG, "setSkip: successful")
     }
 

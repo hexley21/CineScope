@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import org.hxl.cinema.databinding.FragmentCinemaBinding
 import org.hxl.cinema.list.CinemaStateAdapter
@@ -23,11 +24,25 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
             binding.cinemaListTabs,
             binding.cinemaListPager,
             true,
-            true,
+            true
             ) { tab, position ->
                 if (position == 0) tab.setText(requireContext().getString(org.hxl.common.R.string.movies))
                 else tab.setText(requireContext().getString(org.hxl.common.R.string.series))
-            }.attach()
+        }.attach()
+
+        binding.searchBar.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.menu_sort -> {
+                    true
+                }
+                R.id.menu_trend -> {
+                    findNavController().navigate(R.id.openDialogCinemaResult)
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
 
     override fun getViewBinding(
