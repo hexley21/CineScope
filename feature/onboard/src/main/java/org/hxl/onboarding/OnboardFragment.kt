@@ -29,7 +29,7 @@ class OnboardFragment: BaseFragmentVM<FragmentOnboardBinding, OnboardViewModel>(
         super.onViewCreated(view, savedInstanceState)
         binding.btnOnboardContinue.setOnClickListener {
             vm.viewModelScope.launch {
-                vm.setSkip(true)
+                vm.enableSkip()
                 findNavController().navigate(R.id.onboard_to_navigator)
             }
         }

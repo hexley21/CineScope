@@ -1,24 +1,24 @@
-package org.hxl.cinema.list.movie
+package org.hxl.cinema.list
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.bumptech.glide.load.HttpException
-import org.hxl.model.cinema.movie.MovieListItem
 import java.io.IOException
 import java.net.UnknownHostException
 
-class MovieListItemPaging(private val getMovieListItem: suspend (page: Int) -> List<MovieListItem>): PagingSource<Int, MovieListItem>() {
-    override fun getRefreshKey(state: PagingState<Int, MovieListItem>): Int? {
+class CinemaPaging<T: Any>(private val getList: suspend (page: Int) -> List<T>): PagingSource<Int, T>() {
+
+    override fun getRefreshKey(state: PagingState<Int, T>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieListItem> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, T> {
         return try {
             val nextPageNumber = params.key ?: 1
-            val response = getMovieListItem(nextPageNumber)
+            val response = getList(nextPageNumber)
             LoadResult.Page(
                 data = response,
                 prevKey = null, // Only paging forward.

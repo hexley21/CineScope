@@ -24,7 +24,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/img_cinema_list_poster"
                 android:layout_width="match_parent"
-                android:layout_height="256dp"
+                android:layout_height="@dimen/cinema_grid_height"
                 android:scaleType="centerCrop"
                 app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
                 tools:src="@tools:sample/backgrounds/scenic" />

@@ -18,8 +18,8 @@ class OnboardViewModel(
         return getOnboardSkip.invoke()
     }
 
-    suspend fun setSkip(value: Boolean) {
-        setOnboardSkip.invoke(value)
+    suspend fun enableSkip() {
+        setOnboardSkip.invoke(true)
         Log.d(TAG, "setSkip: successful")
     }
 

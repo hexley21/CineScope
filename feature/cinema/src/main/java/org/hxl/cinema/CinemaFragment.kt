@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.tabs.TabLayoutMediator
 import org.hxl.cinema.databinding.FragmentCinemaBinding
-import org.hxl.cinema.list.CinemaPagerAdapter
+import org.hxl.cinema.list.CinemaStateAdapter
 import org.hxl.common.base.BaseFragmentVM
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -16,7 +16,7 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cinemaListPager.adapter = CinemaPagerAdapter(this)
+        binding.cinemaListPager.adapter = CinemaStateAdapter(this)
         binding.cinemaListPager.isUserInputEnabled = false
 
         TabLayoutMediator(

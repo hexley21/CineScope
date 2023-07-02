@@ -50,7 +50,7 @@ interface CinemaService {
         @Query("page") page: Int,
     ): ListResponse<SeriesListItemDTO>
 
-    @GET("movie/top_rated")
+    @GET("tv/top_rated")
     suspend fun getTopSeries(
         @Query("language") language: String,
         @Query("page") page: Int,

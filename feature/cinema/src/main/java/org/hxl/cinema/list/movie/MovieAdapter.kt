@@ -11,7 +11,7 @@ import org.hxl.common.base.BaseViewHolder
 import org.hxl.common.callback.MovieListItemCallback
 import org.hxl.model.cinema.movie.MovieListItem
 
-class MovieListAdapter(private val requestManager: RequestManager): BasePagingAdapter<MovieListItem, MovieListAdapter.MovieListViewHolder>(
+class MovieAdapter(private val requestManager: RequestManager): BasePagingAdapter<MovieListItem, MovieAdapter.MovieListViewHolder>(
     MovieListItemCallback
 ) {
      companion object {

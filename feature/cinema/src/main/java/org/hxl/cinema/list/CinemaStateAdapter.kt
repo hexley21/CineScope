@@ -2,19 +2,19 @@ package org.hxl.cinema.list
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import org.hxl.cinema.list.movie.MovieListFragment
-import org.hxl.cinema.list.series.SeriesListFragment
+import org.hxl.cinema.list.movie.MovieFragment
+import org.hxl.cinema.list.series.SeriesFragment
 
 
-class CinemaPagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
+class CinemaStateAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {
         return 2
     }
 
     override fun createFragment(position: Int): Fragment {
         return when(position % 2) {
-            0 -> MovieListFragment()
-            else -> SeriesListFragment()
+            0 -> MovieFragment()
+            else -> SeriesFragment()
         }
     }
 }
