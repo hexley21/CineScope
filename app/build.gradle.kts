@@ -82,6 +82,7 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.koin.android)
     implementation(libs.koin.test)
+    implementation(libs.kotlinx.coroutines)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

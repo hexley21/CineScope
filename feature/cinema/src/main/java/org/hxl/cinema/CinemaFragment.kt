@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import org.hxl.cinema.databinding.FragmentCinemaBinding
-import org.hxl.cinema.list.CinemaStateAdapter
+import org.hxl.cinema.dialog.CinemaResultDialog
 import org.hxl.common.base.BaseFragmentVM
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -36,7 +35,8 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
                     true
                 }
                 R.id.menu_trend -> {
-                    findNavController().navigate(R.id.openDialogCinemaResult)
+                    val dialog = CinemaResultDialog()
+                    dialog.show(parentFragmentManager, CinemaResultDialog.TAG)
                     true
                 }
 

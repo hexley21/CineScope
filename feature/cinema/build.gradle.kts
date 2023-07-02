@@ -54,7 +54,9 @@ dependencies {
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.glide)
     implementation(libs.androidx.paging.runtime)
+    implementation(libs.kotlinx.coroutines)
 
+    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

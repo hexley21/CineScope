@@ -11,6 +11,9 @@ import org.hxl.model.CinemaResultConstants
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CinemaResultDialog: BaseDialog<DialogCinemaResultBinding>() {
+    companion object {
+        const val TAG = "CinemaResultDialog"
+    }
     private val vm: CinemaResultVM by viewModel<CinemaResultVM>()
     private var endResult: Int = CinemaResultConstants.POPULARITY
 
@@ -37,8 +40,8 @@ class CinemaResultDialog: BaseDialog<DialogCinemaResultBinding>() {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         vm.send(CinemaResultEvent.SetCinemaResult(endResult))
+        super.onDestroyView()
     }
 
 

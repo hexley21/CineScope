@@ -46,4 +46,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.common)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.paging.runtime)
+    implementation(libs.kotlinx.coroutines)
+
+    testImplementation(libs.kotlinx.coroutines.test)
 }

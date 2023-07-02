@@ -1,5 +1,6 @@
 package org.hxl.data
 
+import kotlinx.coroutines.flow.Flow
 import org.hxl.data.repository.pref.PreferenceLocalRepository
 import org.hxl.domain.repository.PreferenceRepository
 
@@ -14,6 +15,18 @@ class PreferenceRepositoryImpl(private val preferenceLocalRepository: Preference
 
     override suspend fun get(key: String, default: String): String {
         return preferenceLocalRepository.get(key, default)
+    }
+
+    override fun getFlow(key: String, default: Int): Flow<Int> {
+        return preferenceLocalRepository.getFlow(key, default)
+    }
+
+    override fun getFlow(key: String, default: Boolean): Flow<Boolean> {
+        return preferenceLocalRepository.getFlow(key, default)
+    }
+
+    override fun getFlow(key: String, default: String): Flow<String> {
+        return preferenceLocalRepository.getFlow(key, default)
     }
 
     override suspend fun set(key: String, value: Int) {

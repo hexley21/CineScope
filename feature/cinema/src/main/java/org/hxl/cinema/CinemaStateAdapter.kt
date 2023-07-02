@@ -1,4 +1,4 @@
-package org.hxl.cinema.list
+package org.hxl.cinema
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

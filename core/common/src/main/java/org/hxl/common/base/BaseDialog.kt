@@ -11,8 +11,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 abstract class BaseDialog<VB : ViewBinding> : BottomSheetDialogFragment() {
     protected lateinit var binding: VB
+    private var onDestroyCallback: (() -> Unit)? = null
     private var defaultOrientation: Int? = null
     protected abstract fun setViewBinding(inflater: LayoutInflater?, container: ViewGroup?): VB
+
+    fun setOnDestroyCallback(callback: () -> Unit) {
+        onDestroyCallback = callback
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,6 +30,11 @@ abstract class BaseDialog<VB : ViewBinding> : BottomSheetDialogFragment() {
     }
 
     protected open fun beforeCreatingView(savedInstanceState: Bundle?) {}
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        onDestroyCallback?.invoke()
+    }
     override fun onResume() {
         super.onResume()
         if (defaultOrientation == null) {

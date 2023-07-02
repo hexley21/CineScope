@@ -26,7 +26,7 @@ retrofit = "2.9.0"
 moshi-kotlin = "1.15.0"
 logging-interceptor = "5.0.0-alpha.11"
 mockito-core = "5.4.0"
-kotlinx-coroutines-test = "1.7.1"
+coroutines = "1.7.1"
 slidingpanelayout = "1.2.0"
 glide = "4.15.1"
 paging-runtime = "3.1.1"
@@ -60,7 +60,8 @@ converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", 
 moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi-kotlin" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging-interceptor" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito-core" }
-kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
+kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
 androidx-slidingpanelayout = { group = "androidx.slidingpanelayout", name = "slidingpanelayout", version.ref = "slidingpanelayout" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging-runtime" }

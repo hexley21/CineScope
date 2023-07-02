@@ -1,9 +1,6 @@
 package org.hxl.cinema.list.movie
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import org.hxl.cinema.databinding.FragmentCinemaListBinding
 import org.hxl.cinema.list.BaseCinemaFragment
 import org.hxl.model.cinema.movie.MovieListItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -16,10 +13,4 @@ class MovieFragment: BaseCinemaFragment<MovieListItem, MovieVM>() {
         listAdapter = MovieAdapter(requestManager)
     }
 
-    override fun getViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentCinemaListBinding {
-        return FragmentCinemaListBinding.inflate(inflater, container, false)
-    }
 }

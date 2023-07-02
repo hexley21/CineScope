@@ -11,4 +11,8 @@ java {
 dependencies {
     implementation(project(":core:model"))
     implementation(project(":core:network"))
+
+    implementation(libs.kotlinx.coroutines)
+
+    testImplementation(libs.kotlinx.coroutines.test)
 }

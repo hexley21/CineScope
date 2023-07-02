@@ -37,6 +37,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="?attr/backgroundColor"
                         android:hint="@string/search"
+                        android:paddingEnd="@dimen/distance_small"
                         app:defaultMarginsEnabled="false"
                         app:menu="@menu/searchbar_menu" />
 

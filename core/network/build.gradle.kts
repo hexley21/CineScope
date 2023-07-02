@@ -16,7 +16,9 @@ dependencies {
     implementation(libs.converter.moshi)
     implementation(libs.moshi.kotlin)
     implementation(libs.logging.interceptor)
+    implementation(libs.kotlinx.coroutines)
 
+    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockito.core)
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)

@@ -9,7 +9,9 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import org.hxl.data.repository.pref.PreferenceLocalRepository
 
 class PreferenceDataStore(private val context: Context): PreferenceLocalRepository {
@@ -33,6 +35,18 @@ class PreferenceDataStore(private val context: Context): PreferenceLocalReposito
     override suspend fun get(key: String, default: String): String {
         Log.d(TAG, "get: $key")
         return context.dataStore.data.first()[stringPreferencesKey(key)] ?: default
+    }
+
+    override fun getFlow(key: String, default: Int): Flow<Int> {
+        return context.dataStore.data.map { it[intPreferencesKey(key)] ?: default }
+    }
+
+    override fun getFlow(key: String, default: Boolean): Flow<Boolean> {
+        return context.dataStore.data.map { it[booleanPreferencesKey(key)] ?: default }
+    }
+
+    override fun getFlow(key: String, default: String): Flow<String> {
+        return context.dataStore.data.map { it[stringPreferencesKey(key)] ?: default }
     }
 
     override suspend fun set(key: String, value: Int) {
