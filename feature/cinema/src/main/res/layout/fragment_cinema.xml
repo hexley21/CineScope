@@ -69,6 +69,19 @@
                 </LinearLayout>
 
             </com.google.android.material.appbar.AppBarLayout>
+            <com.google.android.material.search.SearchView
+                android:id="@+id/cinema_search_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/search"
+
+                app:layout_anchor="@id/search_bar">
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragment_cinema_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:name="org.hxl.cinema.list.search.CinemaSearchFragment"/>
+            </com.google.android.material.search.SearchView>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

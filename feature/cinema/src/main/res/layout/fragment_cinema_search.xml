@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="error" type="Throwable" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:id="@+id/loading_search_cinema"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_cinema_search_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="@dimen/distance_small"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:spanCount="@integer/span_count"
+            tools:listitem="@layout/item_cinema_search" />
+        <ImageView
+            android:id="@+id/img_search_error"
+            android:visibility="gone"
+            android:layout_width="@dimen/error_size"
+            android:layout_height="@dimen/error_size"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/error"
+            android:importantForAccessibility="no" />
+        <TextView
+            android:id="@+id/tv_search_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_search_error"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/distance_default"
+            android:layout_centerInParent="true"
+            android:text="@{error.message}"
+            tools:text="ERROR MESSAGE"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textColor="?attr/colorError"
+            android:visibility="gone" />
+    </RelativeLayout>
+</layout>

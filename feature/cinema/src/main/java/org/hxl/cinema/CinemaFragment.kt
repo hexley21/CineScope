@@ -1,12 +1,17 @@
 package org.hxl.cinema
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import com.google.android.material.tabs.TabLayoutMediator
 import org.hxl.cinema.databinding.FragmentCinemaBinding
 import org.hxl.cinema.dialog.CinemaResultDialog
+import org.hxl.cinema.list.search.CinemaSearchEvent
+import org.hxl.cinema.list.search.CinemaSearchFragment
 import org.hxl.common.base.BaseFragmentVM
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,6 +33,28 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
                 if (position == 0) tab.setText(requireContext().getString(org.hxl.common.R.string.movies))
                 else tab.setText(requireContext().getString(org.hxl.common.R.string.series))
         }.attach()
+
+        val searchFragment: CinemaSearchFragment = binding.fragmentCinemaSearch.getFragment()
+
+        binding.cinemaSearchView.editText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (s.length > 2) {
+                    searchFragment.send(CinemaSearchEvent.Search(s.toString())){ searchFragment.listAdapter.refresh() }
+                }
+                else if (s.isEmpty()) {
+                }
+            }
+
+            override fun afterTextChanged(s: Editable) {}
+        })
+
+        val searchClearBtn: ImageButton =
+            binding.cinemaSearchView.findViewById(com.google.android.material.R.id.search_view_clear_button)
+        searchClearBtn.setOnClickListener {
+            binding.cinemaSearchView.clearText()
+            binding.cinemaSearchView.clearFocusAndHideKeyboard()
+        }
 
         binding.searchBar.setOnMenuItemClickListener {
             when(it.itemId) {
