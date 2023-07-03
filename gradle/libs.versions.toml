@@ -2,34 +2,41 @@
 agp = "8.2.0-alpha10"
 kotlin = "1.8.22"
 core-ktx = "1.10.1"
-junit = "4.13.2"
-androidx-test-ext-junit = "1.1.5"
-espresso-core = "3.5.1"
-espresso-contrib = "3.5.1"
+org-jetbrains-kotlin-jvm = "1.8.22"
+
 appcompat = "1.6.1"
 material = "1.9.0"
 constraintlayout = "2.1.4"
-navigation-fragment-ktx = "2.6.0"
-navigation-ui-ktx = "2.6.0"
-navigation-testing = "2.6.0"
-fragment-testing = "1.6.0"
-fragment-ktx = "1.6.0"
-fragment-testing-manifest = "1.6.0"
 core-splashscreen = "1.0.1"
 swiperefreshlayout = "1.1.0"
+slidingpanelayout = "1.2.0"
+glide = "4.15.1"
+shimmer = "0.5.0"
+
+navigation = "2.6.0"
+fragment = "1.6.0"
 lifecycle-common = "2.6.1"
-org-jetbrains-kotlin-jvm = "1.8.22"
+paging-runtime = "3.1.1"
+
 koin-android = "3.4.2"
 koin-test = "3.4.1"
-datastore-preferences = "1.1.0-alpha04"
+
 retrofit = "2.9.0"
 moshi-kotlin = "1.15.0"
 logging-interceptor = "5.0.0-alpha.11"
-mockito-core = "5.4.0"
+
+datastore-preferences = "1.1.0-alpha04"
+room = "2.5.2"
+
 coroutines = "1.7.1"
-slidingpanelayout = "1.2.0"
-glide = "4.15.1"
-paging-runtime = "3.1.1"
+
+mockito-core = "5.4.0"
+roboelectric = "4.10.3"
+junit = "4.13.2"
+junit-ext = "1.1.5"
+espresso = "3.5.1"
+test-runner = "1.5.2"
+orchestrator = "1.4.2"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -38,33 +45,49 @@ material = { group = "com.google.android.material", name = "material", version.r
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "core-splashscreen" }
+androidx-slidingpanelayout = { group = "androidx.slidingpanelayout", name = "slidingpanelayout", version.ref = "slidingpanelayout" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+shimmer = { group = "com.facebook.shimmer", name="shimmer", version.ref = "shimmer" }
 
-androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation-fragment-ktx" }
-androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation-ui-ktx" }
-androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigation-testing" }
-androidx-fragment-testing = { group = "androidx.fragment", name = "fragment-testing", version.ref = "fragment-testing" }
-androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment-ktx" }
-androidx-fragment-testing-manifest = { group = "androidx.fragment", name = "fragment-testing-manifest", version.ref = "fragment-testing-manifest" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
+androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigation" }
+androidx-fragment-testing = { group = "androidx.fragment", name = "fragment-testing", version.ref = "fragment" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment" }
+androidx-fragment-testing-manifest = { group = "androidx.fragment", name = "fragment-testing-manifest", version.ref = "fragment" }
 
 androidx-lifecycle-common = { group = "androidx.lifecycle", name = "lifecycle-common", version.ref = "lifecycle-common" }
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging-runtime" }
 
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
-espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espresso-contrib" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin-android" }
 koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin-test" }
-androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore-preferences" }
+
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
 moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi-kotlin" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging-interceptor" }
-mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito-core" }
+
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
+
+androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore-preferences" }
+
 kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
-androidx-slidingpanelayout = { group = "androidx.slidingpanelayout", name = "slidingpanelayout", version.ref = "slidingpanelayout" }
-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
-androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging-runtime" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito-core" }
+mockito-android = { group = "org.mockito", name = "mockito-android", version.ref = "mockito-core" }
+
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+junit-ext = { group = "androidx.test.ext", name = "junit", version.ref = "junit-ext" }
+test-runner = { group = "androidx.test", name = "runner", version.ref = "test-runner" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espresso" }
+espresso-idling = { group = "androidx.test.espresso", name = "espresso-idling-resource", version.ref = "espresso" }
+roboelectric = { group = "org.robolectric", name = "robolectric", version.ref = "roboelectric" }
+test-orchestrator = { group = "androidx.test", name = "orchestrator", version.ref = "orchestrator" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

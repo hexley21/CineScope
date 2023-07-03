@@ -45,6 +45,8 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation(libs.shimmer)
+
     implementation(libs.koin.android)
     implementation(libs.androidx.lifecycle.common)
     implementation(libs.androidx.fragment.ktx)
@@ -58,6 +60,6 @@ dependencies {
 
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso.core)
 }
