@@ -19,5 +19,8 @@ data class MultiSearchItem(
     val title: String?,
     val originalTitle: String?,
     val releaseDate: String?,
-    val video: Boolean?
+    val video: Boolean?,
+    val gender: Int?,
+    val knownForDepartment: String?,
+    val profilePath: String?
 )

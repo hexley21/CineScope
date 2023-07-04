@@ -7,13 +7,13 @@ import org.hxl.network.model.cinema.MultiSearchItemDTO
 fun MultiSearchItemDTO.mapToModel(): MultiSearchItem {
     return MultiSearchItem(
         adult,
-        IMG_LOCATION + backdropPath,
+        if (backdropPath != null) IMG_LOCATION + backdropPath else null,
         id,
         name,
         originalLanguage,
         originalName,
         overview,
-        IMG_LOCATION + posterPath,
+        if (posterPath != null) IMG_LOCATION + posterPath else null,
         mediaType,
         genreIds,
         popularity,
@@ -24,6 +24,9 @@ fun MultiSearchItemDTO.mapToModel(): MultiSearchItem {
         title,
         originalTitle,
         releaseDate,
-        video
+        video,
+        gender,
+        knownForDepartment,
+        if (profilePath != null) IMG_LOCATION + profilePath else null
     )
 }

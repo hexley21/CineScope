@@ -35,6 +35,15 @@ class CinemaSearchFragment: BaseFragmentVM<FragmentCinemaSearchBinding, CinemaSe
     override fun beforeCreatingView(savedInstanceState: Bundle?) {
         super.beforeCreatingView(savedInstanceState)
 
+        vm.query.observe(this) {
+            if (it.length < 2) {
+                binding.rvCinemaSearchList.visibility = View.GONE
+            }
+            else {
+                binding.rvCinemaSearchList.visibility = View.VISIBLE
+            }
+        }
+
         lifecycleScope.launch {
             vm.cinemaFlow.collectLatest {
                 listAdapter.submitData(it)

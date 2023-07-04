@@ -30,7 +30,10 @@ class MultiSearchItemDTOMapperTest {
         title = "Movie Title",
         originalTitle = "Original Title",
         releaseDate = "2022-02-01",
-        video = false
+        video = false,
+        1,
+        "Acting",
+        "/profile.jpg"
     )
 
     private val fakeModel = MultiSearchItem(
@@ -52,7 +55,10 @@ class MultiSearchItemDTOMapperTest {
         title = "Movie Title",
         originalTitle = "Original Title",
         releaseDate = "2022-02-01",
-        video = false
+        video = false,
+        1,
+        "Acting",
+        "${IMG_LOCATION}/profile.jpg"
     )
 
     @Test
@@ -79,5 +85,8 @@ class MultiSearchItemDTOMapperTest {
         assertEquals(fakeModel.originalTitle, converted.originalTitle)
         assertEquals(fakeModel.releaseDate, converted.releaseDate)
         assertEquals(fakeModel.video, converted.video)
+        assertEquals(fakeModel.gender, converted.gender)
+        assertEquals(fakeModel.knownForDepartment, converted.knownForDepartment)
+        assertEquals(fakeModel.profilePath, converted.profilePath)
     }
 }

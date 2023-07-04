@@ -51,7 +51,10 @@ object FakeNetworkMovieFactory {
             randomUUID().toString(),
             randomUUID().toString(),
             randomUUID().toString(),
-            Random.nextBoolean()
+            Random.nextBoolean(),
+            Random.nextInt(),
+            randomUUID().toString(),
+            randomUUID().toString()
         )
     }
 

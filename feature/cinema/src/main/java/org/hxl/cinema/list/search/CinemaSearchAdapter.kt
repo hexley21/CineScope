@@ -20,6 +20,7 @@ class CinemaSearchAdapter(
         private const val TAG: String = "CinemaSearchAdapter"
     }
 
+
     override fun getViewHolder(parent: ViewGroup?, viewType: Int): CinemaSearchVH {
         val binding = ItemCinemaSearchBinding.inflate(LayoutInflater.from(parent?.context), parent, false)
         return CinemaSearchVH(binding)
@@ -35,10 +36,29 @@ class CinemaSearchAdapter(
     inner class CinemaSearchVH(binding: ItemCinemaSearchBinding) :
         BaseViewHolder<ItemCinemaSearchBinding, MultiSearchItem>(binding) {
         override fun accept(t: MultiSearchItem) {
-            binding.cinemaName = t.name
-            binding.cinemaYear = t.releaseDate
-            requestManager.load(t.posterPath).into(binding.imgCinemaListPoster)
+            binding.cinemaName = if (t.name == null) t.title else t.name
+            binding.cinemaYear = if (t.releaseDate == null) t.firstAirDate else t.releaseDate
+            if (t.profilePath != null) {
+                loadImg(t.profilePath!!, binding)
+            }
+            else if (t.posterPath != null) {
+                loadImg(t.posterPath!!, binding)
+            }
+            else if (t.backdropPath != null){
+                loadImg(t.backdropPath!!, binding)
+            }
+            else {
+                when (t.mediaType) {
+                    "person" -> binding.imgCinemaListPoster.setBackgroundResource(org.hxl.common.R.drawable.person)
+                    "movie" -> binding.imgCinemaListPoster.setBackgroundResource(org.hxl.common.R.drawable.movie)
+                    "tv" -> binding.imgCinemaListPoster.setBackgroundResource(org.hxl.common.R.drawable.show)
+                }
+            }
 
         }
+    }
+
+    private fun loadImg(img: String, binding: ItemCinemaSearchBinding) {
+        requestManager.load(img).into(binding.imgCinemaListPoster)
     }
 }

@@ -43,5 +43,11 @@ data class MultiSearchItemDTO(
     @Json(name = "release_date")
     val releaseDate: String?,
     @Json(name = "video")
-    val video: Boolean?
+    val video: Boolean?,
+    @Json(name = "gender")
+    val gender: Int?,
+    @Json(name = "known_for_department")
+    val knownForDepartment: String?,
+    @Json(name = "profile_path")
+    val profilePath: String?
 )
