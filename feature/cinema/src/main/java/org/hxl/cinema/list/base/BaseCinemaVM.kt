@@ -55,8 +55,8 @@ abstract class BaseCinemaVM<T: Any>(
 
     private fun setFetchResult(result: Int) {
         when(result) {
-            TOP -> getList = { page -> cinemaUseCase.getPopular("en-US", page) }
-            POPULARITY -> getList = { page -> cinemaUseCase.getTop("en-US", page) }
+            TOP -> getList = { page -> cinemaUseCase.getTop("en-US", page) }
+            POPULARITY -> getList = { page -> cinemaUseCase.getPopular("en-US", page) }
         }
     }
 
