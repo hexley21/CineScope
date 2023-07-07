@@ -25,6 +25,7 @@ class CinemaSearchFragment: BaseFragmentVM<FragmentCinemaSearchBinding, CinemaSe
     val listAdapter = CinemaSearchAdapter(requestManager)
 
     fun send(event: CinemaSearchEvent, callback: () -> Unit) {
+        showLoading()
         vm.send(event, callback)
     }
 
@@ -51,19 +52,23 @@ class CinemaSearchFragment: BaseFragmentVM<FragmentCinemaSearchBinding, CinemaSe
         binding.rvCinemaSearchList.adapter = listAdapter
 
         listAdapter.addLoadStateListener{
-            if (it.refresh is LoadState.Loading) {
+            when (it.refresh) {
+                is LoadState.Loading -> {
 //                    EspressoIdlingResource.increment();
-            }
-            else if (it.refresh is LoadState.NotLoading) {
+                }
 
-                hideError()
-                hideLoading()
+                is LoadState.NotLoading -> {
+                    hideError()
+                    hideLoading()
 //                    EspressoIdlingResource.decrement();
-            } else if (it.refresh is LoadState.Error) {
-                val throwable = (it.refresh as LoadState.Error).error
-                showError((it.refresh as LoadState.Error).error)
-                Log.e(TAG, "onViewCreated: ${throwable.message}", throwable)
-                hideLoading()
+                }
+
+                is LoadState.Error -> {
+                    val throwable = (it.refresh as LoadState.Error).error
+                    showError((it.refresh as LoadState.Error).error)
+                    Log.e(TAG, "onViewCreated: ${throwable.message}", throwable)
+                    hideLoading()
+                }
             }
         }
     }
@@ -94,6 +99,10 @@ class CinemaSearchFragment: BaseFragmentVM<FragmentCinemaSearchBinding, CinemaSe
 
     private fun hideLoading() {
         binding.loadingSearchCinema.visibility = View.GONE
+    }
+
+    private fun showLoading() {
+        binding.loadingSearchCinema.visibility = View.VISIBLE
     }
 
     override fun getViewBinding(
