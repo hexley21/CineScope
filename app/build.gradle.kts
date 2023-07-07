@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace = "org.hxl.cinescope"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "org.hxl.cinescope"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0-alpha.1"
 

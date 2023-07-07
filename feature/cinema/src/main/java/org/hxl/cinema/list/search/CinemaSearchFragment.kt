@@ -28,20 +28,15 @@ class CinemaSearchFragment: BaseFragmentVM<FragmentCinemaSearchBinding, CinemaSe
         vm.send(event, callback)
     }
 
-    fun send(event: CinemaSearchEvent) {
-        vm.send(event)
+    fun hide() {
+        binding.rvCinemaSearchList.visibility = View.GONE
     }
 
     override fun beforeCreatingView(savedInstanceState: Bundle?) {
         super.beforeCreatingView(savedInstanceState)
 
         vm.query.observe(this) {
-            if (it.length < 2) {
-                binding.rvCinemaSearchList.visibility = View.GONE
-            }
-            else {
-                binding.rvCinemaSearchList.visibility = View.VISIBLE
-            }
+            binding.rvCinemaSearchList.visibility = View.VISIBLE
         }
 
         lifecycleScope.launch {

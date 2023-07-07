@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "org.hxl.onboard"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24

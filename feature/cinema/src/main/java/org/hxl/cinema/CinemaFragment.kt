@@ -42,7 +42,8 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
                 if (s.length > 2) {
                     searchFragment.send(CinemaSearchEvent.Search(s.toString())){ searchFragment.listAdapter.refresh() }
                 }
-                else if (s.isEmpty()) {
+                else {
+                    searchFragment.hide()
                 }
             }
 
@@ -50,7 +51,7 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
         })
 
         val searchClearBtn: ImageButton =
-            binding.cinemaSearchView.findViewById(com.google.android.material.R.id.search_view_clear_button)
+            binding.cinemaSearchView.findViewById(com.google.android.material.R.id.open_search_view_clear_button)
         searchClearBtn.setOnClickListener {
             binding.cinemaSearchView.clearText()
             binding.cinemaSearchView.clearFocusAndHideKeyboard()

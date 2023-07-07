@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "org.hxl.navigator"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24

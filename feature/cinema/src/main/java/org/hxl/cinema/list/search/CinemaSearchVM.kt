@@ -12,15 +12,8 @@ import org.hxl.domain.useCases.cinema.SearchMulti
 class CinemaSearchVM(
     private val searchMulti: SearchMulti
 ): ViewModel() {
-    companion object {
-        const val TAG = "CinemaSearchVM"
-    }
 
-    val query: MutableLiveData<String> = MutableLiveData()
-
-    init {
-        query.postValue("")
-    }
+    val query: MutableLiveData<String> = MutableLiveData("")
 
     fun send(event: CinemaSearchEvent, callback: () -> Unit) {
         when(event) {
@@ -29,10 +22,6 @@ class CinemaSearchVM(
             }
         }
         callback()
-    }
-
-    fun send(event: CinemaSearchEvent) {
-        send(event) {}
     }
 
     val cinemaFlow = Pager(PagingConfig(pageSize = 20)) {
