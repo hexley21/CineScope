@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.activity.OnBackPressedCallback
+import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import org.hxl.cinema.databinding.FragmentCinemaBinding
 import org.hxl.cinema.dialog.CinemaResultDialog
@@ -21,6 +23,11 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            CinemaOnBackCallBack(binding.slidingPaneLayout)
+        )
+
         binding.cinemaListPager.adapter = CinemaStateAdapter(this)
         binding.cinemaListPager.isUserInputEnabled = false
 
@@ -33,6 +40,7 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
                 if (position == 0) tab.setText(requireContext().getString(org.hxl.common.R.string.movies))
                 else tab.setText(requireContext().getString(org.hxl.common.R.string.series))
         }.attach()
+
 
         val searchFragment: CinemaSearchFragment = binding.fragmentCinemaSearch.getFragment()
 
@@ -78,5 +86,31 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
         container: ViewGroup?
     ): FragmentCinemaBinding {
         return FragmentCinemaBinding.inflate(layoutInflater, container, false)
+    }
+
+    class CinemaOnBackCallBack(
+        private val slidingPaneLayout: SlidingPaneLayout
+    ) : OnBackPressedCallback(
+        slidingPaneLayout.isSlideable && slidingPaneLayout.isOpen
+    ), SlidingPaneLayout.PanelSlideListener {
+
+        init {
+            slidingPaneLayout.addPanelSlideListener(this)
+        }
+
+        override fun handleOnBackPressed() {
+            // Return to the list pane when the system back button is pressed.
+            slidingPaneLayout.closePane()
+        }
+
+        override fun onPanelSlide(panel: View, slideOffset: Float) {}
+
+        override fun onPanelOpened(panel: View) {
+            isEnabled = true
+        }
+
+        override fun onPanelClosed(panel: View) {
+            isEnabled = false
+        }
     }
 }

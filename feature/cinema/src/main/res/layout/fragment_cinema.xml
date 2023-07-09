@@ -89,6 +89,7 @@
             android:id="@+id/detail_container"
             android:layout_width="300dp"
             android:layout_weight="1"
+            android:name="org.hxl.cinema.detail.CinemaDetailsFragment"
             android:layout_height="match_parent"/>
     </androidx.slidingpanelayout.widget.SlidingPaneLayout>
 </layout>

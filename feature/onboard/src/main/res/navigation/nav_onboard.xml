@@ -10,7 +10,9 @@
         android:label="OnboardingFragment" >
         <action
             android:id="@+id/onboard_to_navigator"
-            app:destination="@id/nav_root" />
+            app:destination="@id/nav_root"
+            app:popUpTo="@id/nav_onboard"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <include app:graph="@navigation/nav_root" />
