@@ -7,18 +7,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.RequestManager
 import com.google.android.material.tabs.TabLayoutMediator
 import org.hxl.cinema.databinding.FragmentCinemaBinding
 import org.hxl.cinema.detail.base.BaseCinemaDetailsFragment
+import org.hxl.cinema.detail.movie.MovieDetailsFragment
+import org.hxl.cinema.detail.series.SeriesDetailsFragment
 import org.hxl.cinema.dialog.CinemaResultDialog
 import org.hxl.cinema.list.base.CinemaOnBackPressed
 import org.hxl.cinema.search.CinemaSearchEvent
 import org.hxl.cinema.search.CinemaSearchFragment
 import org.hxl.common.base.BaseFragmentVM
+import org.hxl.model.cinema.movie.MovieListItem
+import org.hxl.model.cinema.series.SeriesListItem
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
     override val vm: CinemaViewModel by viewModel<CinemaViewModel>()
+    private val requestManager: RequestManager by inject()
+
+    private val movieDetails = MovieDetailsFragment()
+    private val seriesDetails = SeriesDetailsFragment()
+
     private lateinit var detailsStrategy: BaseCinemaDetailsFragment<*, * ,*>
 
     fun setDetailsStrategy(detailsStrategy: BaseCinemaDetailsFragment<*, * ,*>) {
@@ -26,8 +38,18 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
         childFragmentManager.beginTransaction().replace(R.id.detail_container, detailsStrategy).commit()
     }
 
-    fun setCinema(id: Int) {
-        detailsStrategy.setCinema(id)
+    private fun setCinema(id: Int?, title: String?, poster: String?) {
+        detailsStrategy.setCinema(id!!)
+        binding.detailsCollapsingLayout.title = title
+        requestManager.load(poster).into(binding.cinemaDetailsPoster)
+    }
+
+    fun setCinema(movie: MovieListItem) {
+        setCinema(movie.id, movie.title, movie.backdropPath?: movie.posterPath)
+    }
+
+    fun setCinema(series: SeriesListItem) {
+        setCinema(series.id, series.name, series.backdropPath?: series.posterPath)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,6 +61,15 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
 
         binding.cinemaListPager.adapter = CinemaStateAdapter(this)
         binding.cinemaListPager.isUserInputEnabled = false
+        binding.cinemaListPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                when(position) {
+                    0 -> setDetailsStrategy(movieDetails)
+                    else -> setDetailsStrategy(seriesDetails)
+                }
+            }
+        })
 
         TabLayoutMediator(
             binding.cinemaListTabs,

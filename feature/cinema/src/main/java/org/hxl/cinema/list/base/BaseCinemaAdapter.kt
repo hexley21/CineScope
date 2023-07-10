@@ -9,20 +9,20 @@ import org.hxl.common.base.BaseViewHolder
 abstract class BaseCinemaAdapter<T: Any, VH: BaseViewHolder<*, T>>(
     protected val requestManager: RequestManager,
     private val slidingPaneLayout: SlidingPaneLayout,
-    private val setCinemaId: (id: Int) -> Unit,
+    private val setCinemaId: (cinema: T) -> Unit,
     itemCallback: ItemCallback<T>
 ) : BasePagingAdapter<T, VH>(itemCallback) {
 
-    abstract fun getCinemaId(position: Int): Int
+    abstract fun getCinema(position: Int): T
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         super.onBindViewHolder(holder, position)
-        val cinemaId = getCinemaId(position)
+        val cinema = getCinema(position)
         if (position == 0) {
-            setCinemaId(cinemaId)
+            setCinemaId(cinema)
         }
         holder.itemView.setOnClickListener {
-            setCinemaId(cinemaId)
+            setCinemaId(cinema)
             slidingPaneLayout.openPane()
         }
     }

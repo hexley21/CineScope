@@ -109,6 +109,7 @@
                     app:toolbarId="@id/toolbar_cinema_details">
 
                     <ImageView
+                        android:id="@+id/cinema_details_poster"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:importantForAccessibility="no"

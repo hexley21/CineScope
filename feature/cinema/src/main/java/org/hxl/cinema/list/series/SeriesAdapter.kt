@@ -13,10 +13,10 @@ import org.hxl.model.cinema.series.SeriesListItem
 class SeriesAdapter(
     requestManager: RequestManager,
     slidingPaneLayout: SlidingPaneLayout,
-    setCinemaId: (id: Int) -> Unit,
+    setCinemaId: (id: SeriesListItem) -> Unit,
 ): BaseCinemaAdapter<SeriesListItem, SeriesAdapter.SeriesListViewHolder>(requestManager, slidingPaneLayout, setCinemaId, SeriesListItemCallback) {
-    override fun getCinemaId(position: Int): Int {
-        return getItem(position)!!.id!!
+    override fun getCinema(position: Int): SeriesListItem {
+        return getItem(position)!!
     }
 
     override fun getViewHolder(parent: ViewGroup?, viewType: Int): SeriesListViewHolder {
