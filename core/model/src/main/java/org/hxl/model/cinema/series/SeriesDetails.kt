@@ -41,5 +41,6 @@ data class SeriesDetails(
     val tagline: String?,
     val type: String?,
     val voteAverage: Double?,
-    val voteCount: Int?
+    val voteCount: Int?,
+
 )

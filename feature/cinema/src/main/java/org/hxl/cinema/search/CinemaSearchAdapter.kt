@@ -1,4 +1,4 @@
-package org.hxl.cinema.list.search
+package org.hxl.cinema.search
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.bumptech.glide.RequestManager
 import org.hxl.cinema.databinding.ItemCinemaSearchBinding
-import org.hxl.cinema.list.search.CinemaSearchAdapter.CinemaSearchVH
+import org.hxl.cinema.search.CinemaSearchAdapter.CinemaSearchVH
 import org.hxl.common.base.BasePagingAdapter
 import org.hxl.common.base.BaseViewHolder
 import org.hxl.common.callback.CinemaSearchItemCallback

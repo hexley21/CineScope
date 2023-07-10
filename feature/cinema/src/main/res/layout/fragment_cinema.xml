@@ -80,7 +80,7 @@
                     android:id="@+id/fragment_cinema_search"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:name="org.hxl.cinema.list.search.CinemaSearchFragment"/>
+                    android:name="org.hxl.cinema.search.CinemaSearchFragment"/>
             </com.google.android.material.search.SearchView>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

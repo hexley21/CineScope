@@ -1,6 +1,8 @@
 package org.hxl.cinema.list.base
 
+import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +25,12 @@ abstract class BaseCinemaFragment<T: Any, VM: BaseCinemaVM<T>>: BaseFragmentVM<F
     }
     protected val requestManager: RequestManager by inject()
     protected lateinit var listAdapter: BasePagingAdapter<T, *>
+
+
+    inline fun <reified P: Parcelable> Bundle.parcelable(key: String): P? = when {
+        Build.VERSION.SDK_INT >= 33 -> getParcelable(key, P::class.java)
+        else -> @Suppress("DEPRECATION") getParcelable(key) as? P
+    }
 
     override fun beforeCreatingView(savedInstanceState: Bundle?) {
         super.beforeCreatingView(savedInstanceState)

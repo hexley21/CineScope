@@ -1,4 +1,4 @@
-package org.hxl.cinema.list.search
+package org.hxl.cinema.search
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

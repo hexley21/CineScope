@@ -1,4 +1,4 @@
-package org.hxl.cinema.list.search
+package org.hxl.cinema.search
 
 import android.os.Bundle
 import android.util.Log

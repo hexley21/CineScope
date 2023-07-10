@@ -4,10 +4,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import org.hxl.cinema.detail.CinemaDetailsVM
 import org.hxl.cinema.dialog.CinemaResultVM
 import org.hxl.cinema.list.movie.MovieVM
-import org.hxl.cinema.list.search.CinemaSearchVM
 import org.hxl.cinema.list.series.SeriesVM
+import org.hxl.cinema.search.CinemaSearchVM
 import org.hxl.cinescope.R
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -37,6 +38,10 @@ val cinemaModule = module {
         CinemaSearchVM(
             searchMulti = get()
         )
+    }
+
+    viewModel<CinemaDetailsVM> {
+        CinemaDetailsVM()
     }
 
     single<RequestManager> {
