@@ -1,6 +1,7 @@
 package org.hxl.model.cinema.movie
 
 
+import org.hxl.model.cinema.detail.BelongsToCollection
 import org.hxl.model.cinema.detail.Genre
 import org.hxl.model.cinema.detail.ProductionCompany
 import org.hxl.model.cinema.detail.ProductionCountry
@@ -9,7 +10,7 @@ import org.hxl.model.cinema.detail.SpokenLanguage
 data class MovieDetails(
     val adult: Boolean?,
     val backdropPath: String?,
-    val belongsToCollection: String?,
+    val belongsToCollection: BelongsToCollection?,
     val budget: Int?,
     val genres: List<Genre?>?,
     val homepage: String?,

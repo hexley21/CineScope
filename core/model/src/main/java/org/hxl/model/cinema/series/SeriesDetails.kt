@@ -7,6 +7,7 @@ import org.hxl.model.cinema.detail.SpokenLanguage
 import org.hxl.model.cinema.series.detail.CreatedBy
 import org.hxl.model.cinema.series.detail.LastEpisodeToAir
 import org.hxl.model.cinema.series.detail.Network
+import org.hxl.model.cinema.series.detail.NextEpisodeToAir
 import org.hxl.model.cinema.series.detail.Season
 
 data class SeriesDetails(
@@ -23,7 +24,7 @@ data class SeriesDetails(
     val lastAirDate: String?,
     val lastEpisodeToAir: LastEpisodeToAir?,
     val name: String?,
-    val nextEpisodeToAir: String?,
+    val nextEpisodeToAir: NextEpisodeToAir?,
     val networks: List<Network?>?,
     val numberOfEpisodes: Int?,
     val numberOfSeasons: Int?,

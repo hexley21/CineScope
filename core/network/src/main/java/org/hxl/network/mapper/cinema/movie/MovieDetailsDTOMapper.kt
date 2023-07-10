@@ -4,13 +4,14 @@ package org.hxl.network.mapper.cinema.movie
 import org.hxl.model.cinema.movie.MovieDetails
 import org.hxl.network.mapper.MapperConstants.IMG_LOCATION
 import org.hxl.network.mapper.cinema.detail.mapToModel
+import org.hxl.network.mapper.cinema.movie.detail.mapToModel
 import org.hxl.network.model.cinema.movie.MovieDetailsDTO
 
 fun MovieDetailsDTO.mapToModel(): MovieDetails {
     return MovieDetails(
         adult,
         IMG_LOCATION + backdropPath,
-        belongsToCollection,
+        belongsToCollection?.mapToModel(),
         budget,
         genres?.map { it?.mapToModel() },
         homepage,

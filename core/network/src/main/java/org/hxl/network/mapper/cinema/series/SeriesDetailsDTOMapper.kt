@@ -21,7 +21,7 @@ fun SeriesDetailsDTO.mapToModel(): SeriesDetails {
         lastAirDate,
         lastEpisodeToAir?.mapToModel(),
         name,
-        nextEpisodeToAir,
+        nextEpisodeToAir?.mapToModel(),
         networks?.map { it?.mapToModel() },
         numberOfEpisodes,
         numberOfSeasons,

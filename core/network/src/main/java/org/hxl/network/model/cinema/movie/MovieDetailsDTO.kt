@@ -7,6 +7,7 @@ import org.hxl.network.model.cinema.detail.GenreDTO
 import org.hxl.network.model.cinema.detail.ProductionCompanyDTO
 import org.hxl.network.model.cinema.detail.ProductionCountryDTO
 import org.hxl.network.model.cinema.detail.SpokenLanguageDTO
+import org.hxl.network.model.cinema.movie.detail.BelongsToCollectionDTO
 
 @JsonClass(generateAdapter = true)
 data class MovieDetailsDTO(
@@ -15,7 +16,7 @@ data class MovieDetailsDTO(
     @Json(name = "backdrop_path")
     val backdropPath: String?,
     @Json(name = "belongs_to_collection")
-    val belongsToCollection: String?,
+    val belongsToCollection: BelongsToCollectionDTO?,
     @Json(name = "budget")
     val budget: Int?,
     @Json(name = "genres")
