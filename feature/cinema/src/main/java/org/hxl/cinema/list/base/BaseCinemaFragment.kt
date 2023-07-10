@@ -12,6 +12,7 @@ import androidx.paging.LoadState
 import com.bumptech.glide.RequestManager
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.hxl.cinema.CinemaFragment
 import org.hxl.cinema.databinding.FragmentCinemaListBinding
 import org.hxl.cinema.list.CinemaEvent
 import org.hxl.common.base.BaseFragmentVM
@@ -25,11 +26,18 @@ abstract class BaseCinemaFragment<T: Any, VM: BaseCinemaVM<T>>: BaseFragmentVM<F
     }
     protected val requestManager: RequestManager by inject()
     protected lateinit var listAdapter: BasePagingAdapter<T, *>
+    protected lateinit var parentFragment: CinemaFragment
 
 
     inline fun <reified P: Parcelable> Bundle.parcelable(key: String): P? = when {
         Build.VERSION.SDK_INT >= 33 -> getParcelable(key, P::class.java)
         else -> @Suppress("DEPRECATION") getParcelable(key) as? P
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        parentFragment = (requireParentFragment() as CinemaFragment)
     }
 
     override fun beforeCreatingView(savedInstanceState: Bundle?) {

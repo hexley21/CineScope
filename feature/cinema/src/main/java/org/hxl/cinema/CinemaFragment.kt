@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import com.google.android.material.tabs.TabLayoutMediator
 import org.hxl.cinema.databinding.FragmentCinemaBinding
-import org.hxl.cinema.detail.CinemaDetailsFragment
+import org.hxl.cinema.detail.base.BaseCinemaDetailsFragment
 import org.hxl.cinema.dialog.CinemaResultDialog
 import org.hxl.cinema.list.base.CinemaOnBackPressed
 import org.hxl.cinema.search.CinemaSearchEvent
@@ -19,14 +19,19 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
     override val vm: CinemaViewModel by viewModel<CinemaViewModel>()
-    private lateinit var detailsFragment: CinemaDetailsFragment
+    private lateinit var detailsStrategy: BaseCinemaDetailsFragment<*, * ,*>
 
-    fun setCinemaId(id: Int) {
-        detailsFragment.setCinemaId(id)
+    fun setDetailsStrategy(detailsStrategy: BaseCinemaDetailsFragment<*, * ,*>) {
+        this.detailsStrategy = detailsStrategy
+        childFragmentManager.beginTransaction().replace(R.id.detail_container, detailsStrategy).commit()
     }
+
+    fun setCinema(id: Int) {
+        detailsStrategy.setCinema(id)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        detailsFragment = binding.detailContainer.getFragment()
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             CinemaOnBackPressed(binding.slidingPaneLayout)
