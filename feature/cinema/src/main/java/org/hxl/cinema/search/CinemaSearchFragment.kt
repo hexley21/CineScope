@@ -10,68 +10,25 @@ import androidx.paging.LoadState
 import com.bumptech.glide.RequestManager
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.hxl.cinema.CinemaFragment
+import org.hxl.cinema.R
 import org.hxl.cinema.databinding.FragmentCinemaSearchBinding
 import org.hxl.common.base.BaseFragmentVM
+import org.hxl.model.CinemaMediaTypeConstants.MOVIES
+import org.hxl.model.CinemaMediaTypeConstants.SERIES
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.net.UnknownHostException
 
 class CinemaSearchFragment: BaseFragmentVM<FragmentCinemaSearchBinding, CinemaSearchVM>() {
-    override val vm: CinemaSearchVM by viewModel<CinemaSearchVM>()
     companion object {
         private const val TAG = "CinemaListFragment"
     }
+
+    private lateinit var cinemaFragment: CinemaFragment
     private val requestManager: RequestManager by inject()
-    val listAdapter = CinemaSearchAdapter(requestManager)
-
-    fun send(event: CinemaSearchEvent, callback: () -> Unit) {
-        showLoading()
-        vm.send(event, callback)
-    }
-
-    fun hide() {
-        binding.rvCinemaSearchList.visibility = View.GONE
-    }
-
-    override fun beforeCreatingView(savedInstanceState: Bundle?) {
-        super.beforeCreatingView(savedInstanceState)
-
-        vm.query.observe(this) {
-            binding.rvCinemaSearchList.visibility = View.VISIBLE
-        }
-
-        lifecycleScope.launch {
-            vm.cinemaFlow.collectLatest {
-                listAdapter.submitData(it)
-            }
-        }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.rvCinemaSearchList.adapter = listAdapter
-
-        listAdapter.addLoadStateListener{
-            when (it.refresh) {
-                is LoadState.Loading -> {
-//                    EspressoIdlingResource.increment();
-                }
-
-                is LoadState.NotLoading -> {
-                    hideError()
-                    hideLoading()
-//                    EspressoIdlingResource.decrement();
-                }
-
-                is LoadState.Error -> {
-                    val throwable = (it.refresh as LoadState.Error).error
-                    showError((it.refresh as LoadState.Error).error)
-                    Log.e(TAG, "onViewCreated: ${throwable.message}", throwable)
-                    hideLoading()
-                }
-            }
-        }
-    }
+    private lateinit var listAdapter: CinemaSearchAdapter
+    override val vm: CinemaSearchVM by viewModel<CinemaSearchVM>()
 
     private fun hideError() {
         binding.imgSearchError.visibility = View.GONE
@@ -105,10 +62,79 @@ class CinemaSearchFragment: BaseFragmentVM<FragmentCinemaSearchBinding, CinemaSe
         binding.loadingSearchCinema.visibility = View.VISIBLE
     }
 
-    override fun getViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentCinemaSearchBinding {
+
+    override fun beforeCreatingView(savedInstanceState: Bundle?) {
+        super.beforeCreatingView(savedInstanceState)
+        cinemaFragment = requireParentFragment() as CinemaFragment
+
+        listAdapter = CinemaSearchAdapter(
+            requestManager,
+            requireActivity().findViewById(R.id.sliding_pane_layout),
+            { cinemaFragment.setCinema(it) },
+            {
+                Log.d(TAG, "beforeCreatingView: $it")
+                when(it) {
+                MOVIES -> {
+                    Log.d(TAG, "beforeCreatingView: MOVIES")
+                    cinemaFragment.setMovieStrategy()
+                }
+                SERIES -> {
+                    Log.d(TAG, "beforeCreatingView: SERIES")
+                    cinemaFragment.setSeriesStrategy()
+                }
+                }
+            })
+
+        lifecycleScope.launch {
+            vm.listFlow?.collectLatest {
+                binding.rvCinemaSearchList.visibility = View.VISIBLE
+                listAdapter.submitData(it)
+            }
+        }
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.rvCinemaSearchList.adapter = listAdapter
+
+        listAdapter.addLoadStateListener{
+            when (it.refresh) {
+                is LoadState.Loading -> {
+//                    EspressoIdlingResource.increment();
+                }
+
+                is LoadState.NotLoading -> {
+                    hideError()
+                    hideLoading()
+//                    EspressoIdlingResource.decrement();
+                }
+
+                is LoadState.Error -> {
+                    val throwable = (it.refresh as LoadState.Error).error
+                    showError((it.refresh as LoadState.Error).error)
+                    Log.e(TAG, "onViewCreated: ${throwable.message}", throwable)
+                    hideLoading()
+                }
+            }
+        }
+    }
+
+    override fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCinemaSearchBinding {
         return FragmentCinemaSearchBinding.inflate(inflater, container, false)
     }
+
+    fun send(event: CinemaSearchEvent) {
+        when(event) {
+            is CinemaSearchEvent.Search -> {
+                if (event.query.length > 2) {
+                    showLoading()
+                    binding.rvCinemaSearchList.visibility = View.VISIBLE
+                    vm.send(event)
+                }
+                else binding.rvCinemaSearchList.visibility = View.GONE
+            }
+        }
+    }
+
 }

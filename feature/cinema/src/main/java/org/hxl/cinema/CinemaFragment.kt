@@ -3,6 +3,7 @@ package org.hxl.cinema
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,21 +20,21 @@ import org.hxl.cinema.list.base.CinemaOnBackPressed
 import org.hxl.cinema.search.CinemaSearchEvent
 import org.hxl.cinema.search.CinemaSearchFragment
 import org.hxl.common.base.BaseFragmentVM
+import org.hxl.model.cinema.MultiSearchItem
 import org.hxl.model.cinema.movie.MovieListItem
 import org.hxl.model.cinema.series.SeriesListItem
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
-    override val vm: CinemaViewModel by viewModel<CinemaViewModel>()
-    private val requestManager: RequestManager by inject()
-
-    private val movieDetails = MovieDetailsFragment()
-    private val seriesDetails = SeriesDetailsFragment()
 
     private lateinit var detailsStrategy: BaseCinemaDetailsFragment<*, * ,*>
+    private val requestManager: RequestManager by inject()
+    private val movieDetails = MovieDetailsFragment()
+    private val seriesDetails = SeriesDetailsFragment()
+    override val vm: CinemaViewModel by viewModel<CinemaViewModel>()
 
-    fun setDetailsStrategy(detailsStrategy: BaseCinemaDetailsFragment<*, * ,*>) {
+    private fun setDetailsStrategy(detailsStrategy: BaseCinemaDetailsFragment<*, * ,*>) {
         this.detailsStrategy = detailsStrategy
         childFragmentManager.beginTransaction().replace(R.id.detail_container, detailsStrategy).commit()
     }
@@ -44,16 +45,9 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
         requestManager.load(poster).into(binding.cinemaDetailsPoster)
     }
 
-    fun setCinema(movie: MovieListItem) {
-        setCinema(movie.id, movie.title, movie.backdropPath?: movie.posterPath)
-    }
-
-    fun setCinema(series: SeriesListItem) {
-        setCinema(series.id, series.name, series.backdropPath?: series.posterPath)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             CinemaOnBackPressed(binding.slidingPaneLayout)
@@ -61,41 +55,34 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
 
         binding.cinemaListPager.adapter = CinemaStateAdapter(this)
         binding.cinemaListPager.isUserInputEnabled = false
+
         binding.cinemaListPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 when(position) {
-                    0 -> setDetailsStrategy(movieDetails)
-                    else -> setDetailsStrategy(seriesDetails)
+                    0 -> setMovieStrategy()
+                    else -> setSeriesStrategy()
                 }
             }
         })
 
-        TabLayoutMediator(
-            binding.cinemaListTabs,
-            binding.cinemaListPager,
-            true,
-            true
-            ) { tab, position ->
-                if (position == 0) tab.setText(requireContext().getString(org.hxl.common.R.string.movies))
-                else tab.setText(requireContext().getString(org.hxl.common.R.string.series))
+        TabLayoutMediator(binding.cinemaListTabs, binding.cinemaListPager, true, true)
+        { tab, position ->
+            if (position == 0) tab.setText(requireContext().getString(org.hxl.common.R.string.movies))
+            else tab.setText(requireContext().getString(org.hxl.common.R.string.series))
         }.attach()
 
 
         val searchFragment: CinemaSearchFragment = binding.fragmentCinemaSearch.getFragment()
 
-        binding.cinemaSearchView.editText.addTextChangedListener(object : TextWatcher {
+        binding.cinemaSearchView.editText.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.length > 2) {
-                    searchFragment.send(CinemaSearchEvent.Search(s.toString())){ searchFragment.listAdapter.refresh() }
-                }
-                else {
-                    searchFragment.hide()
-                }
-            }
-
             override fun afterTextChanged(s: Editable) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                Log.d("CINEMA_FRAGMENT", "onTextChanged: $s")
+                searchFragment.send(CinemaSearchEvent.Search(s.toString()))
+            }
         })
 
         val searchClearBtn: ImageButton =
@@ -107,26 +94,35 @@ class CinemaFragment: BaseFragmentVM<FragmentCinemaBinding, CinemaViewModel>() {
 
         binding.searchBar.setOnMenuItemClickListener {
             when(it.itemId) {
-                R.id.menu_sort -> {
-                    true
-                }
+                R.id.menu_sort -> true
                 R.id.menu_trend -> {
                     val dialog = CinemaResultDialog()
                     dialog.show(parentFragmentManager, CinemaResultDialog.TAG)
                     true
                 }
-
                 else -> false
             }
         }
     }
 
-    override fun getViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentCinemaBinding {
+    override fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCinemaBinding {
         return FragmentCinemaBinding.inflate(layoutInflater, container, false)
     }
 
+    fun setMovieStrategy() = setDetailsStrategy(movieDetails)
+
+    fun setSeriesStrategy() = setDetailsStrategy(seriesDetails)
+
+    fun setCinema(movie: MovieListItem) {
+        setCinema(movie.id, movie.title, movie.backdropPath?: movie.posterPath)
+    }
+
+    fun setCinema(series: SeriesListItem) {
+        setCinema(series.id, series.name, series.backdropPath?: series.posterPath)
+    }
+
+    fun setCinema(search: MultiSearchItem) {
+        setCinema(search.id, search.name ?: search.title, search.profilePath ?: search.backdropPath?: search.posterPath)
+    }
 
 }

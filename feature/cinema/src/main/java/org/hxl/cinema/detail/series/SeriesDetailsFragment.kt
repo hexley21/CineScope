@@ -10,10 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SeriesDetailsFragment: BaseCinemaDetailsFragment<SeriesDetails, SeriesDetailsVM, FragmentSeriesDetailsBinding>() {
     override val vm: SeriesDetailsVM by viewModel<SeriesDetailsVM>()
 
-    override fun getViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentSeriesDetailsBinding {
+    override fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentSeriesDetailsBinding {
         return FragmentSeriesDetailsBinding.inflate(inflater, container, false)
     }
 }

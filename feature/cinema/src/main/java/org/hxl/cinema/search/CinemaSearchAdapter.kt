@@ -1,25 +1,27 @@
 package org.hxl.cinema.search
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
+import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.bumptech.glide.RequestManager
 import org.hxl.cinema.databinding.ItemCinemaSearchBinding
 import org.hxl.cinema.search.CinemaSearchAdapter.CinemaSearchVH
 import org.hxl.common.base.BasePagingAdapter
 import org.hxl.common.base.BaseViewHolder
 import org.hxl.common.callback.CinemaSearchItemCallback
+import org.hxl.model.CinemaMediaTypeConstants.MOVIES
+import org.hxl.model.CinemaMediaTypeConstants.PERSON
+import org.hxl.model.CinemaMediaTypeConstants.SERIES
 import org.hxl.model.cinema.MultiSearchItem
 
 class CinemaSearchAdapter(
-    private val requestManager: RequestManager
+    private val requestManager: RequestManager,
+    private val slidingPaneLayout: SlidingPaneLayout,
+    private val setCinemaId: (cinema: MultiSearchItem) -> Unit,
+    private val setStrategy: (mediaType: String?) -> Unit
 ) : BasePagingAdapter<MultiSearchItem, CinemaSearchVH>(CinemaSearchItemCallback) {
 
-    companion object {
-        private const val TAG: String = "CinemaSearchAdapter"
-    }
-
+    private var isIdSet = false;
 
     override fun getViewHolder(parent: ViewGroup?, viewType: Int): CinemaSearchVH {
         val binding = ItemCinemaSearchBinding.inflate(LayoutInflater.from(parent?.context), parent, false)
@@ -28,8 +30,19 @@ class CinemaSearchAdapter(
 
     override fun onBindViewHolder(holder: CinemaSearchVH, position: Int) {
         super.onBindViewHolder(holder, position)
+        val cinema = getItem(position)!!
+        if (cinema.mediaType == PERSON)
+            return
+
+        if (!isIdSet) {
+            setStrategy(cinema.mediaType)
+            setCinemaId(cinema)
+            isIdSet = true
+        }
         holder.itemView.setOnClickListener {
-            Log.d(TAG, "onBindViewHolder: ${holder.itemView.findNavController().currentDestination}")
+            setStrategy(cinema.mediaType)
+            setCinemaId(cinema)
+            slidingPaneLayout.openPane()
         }
     }
 
@@ -49,9 +62,9 @@ class CinemaSearchAdapter(
             }
             else {
                 when (t.mediaType) {
-                    "person" -> binding.imgCinemaListPoster.setBackgroundResource(org.hxl.common.R.drawable.person)
-                    "movie" -> binding.imgCinemaListPoster.setBackgroundResource(org.hxl.common.R.drawable.movie)
-                    "tv" -> binding.imgCinemaListPoster.setBackgroundResource(org.hxl.common.R.drawable.show)
+                    PERSON -> binding.imgCinemaListPoster.setBackgroundResource(org.hxl.common.R.drawable.person)
+                    MOVIES -> binding.imgCinemaListPoster.setBackgroundResource(org.hxl.common.R.drawable.movie)
+                    SERIES -> binding.imgCinemaListPoster.setBackgroundResource(org.hxl.common.R.drawable.show)
                 }
             }
 

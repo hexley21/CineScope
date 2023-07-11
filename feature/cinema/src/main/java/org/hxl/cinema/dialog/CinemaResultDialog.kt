@@ -14,8 +14,9 @@ class CinemaResultDialog: BaseDialog<DialogCinemaResultBinding>() {
     companion object {
         const val TAG = "CinemaResultDialog"
     }
-    private val vm: CinemaResultVM by viewModel<CinemaResultVM>()
+
     private var endResult: Int = CinemaResultConstants.POPULARITY
+    private val vm: CinemaResultVM by viewModel<CinemaResultVM>()
 
     override fun beforeCreatingView(savedInstanceState: Bundle?) {
         super.beforeCreatingView(savedInstanceState)
@@ -45,10 +46,7 @@ class CinemaResultDialog: BaseDialog<DialogCinemaResultBinding>() {
     }
 
 
-    override fun setViewBinding(
-        inflater: LayoutInflater?,
-        container: ViewGroup?
-    ): DialogCinemaResultBinding {
+    override fun setViewBinding(inflater: LayoutInflater?, container: ViewGroup?): DialogCinemaResultBinding {
         return DialogCinemaResultBinding.inflate(layoutInflater, container, false)
     }
 }
