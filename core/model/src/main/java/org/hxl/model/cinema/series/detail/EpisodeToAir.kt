@@ -1,6 +1,6 @@
 package org.hxl.model.cinema.series.detail
 
-data class LastEpisodeToAir(
+data class EpisodeToAir(
     val id: Int?,
     val name: String?,
     val overview: String?,

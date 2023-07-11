@@ -7,7 +7,7 @@ import org.hxl.model.cinema.detail.ProductionCountry
 import org.hxl.model.cinema.detail.SpokenLanguage
 import org.hxl.model.cinema.series.SeriesDetails
 import org.hxl.model.cinema.series.detail.CreatedBy
-import org.hxl.model.cinema.series.detail.LastEpisodeToAir
+import org.hxl.model.cinema.series.detail.EpisodeToAir
 import org.hxl.model.cinema.series.detail.Network
 import org.hxl.model.cinema.series.detail.Season
 import org.hxl.network.mapper.MapperConstants.IMG_LOCATION
@@ -17,7 +17,7 @@ import org.hxl.network.model.cinema.detail.ProductionCountryDTO
 import org.hxl.network.model.cinema.detail.SpokenLanguageDTO
 import org.hxl.network.model.cinema.series.SeriesDetailsDTO
 import org.hxl.network.model.cinema.series.detail.CreatedByDTO
-import org.hxl.network.model.cinema.series.detail.LastEpisodeToAirDTO
+import org.hxl.network.model.cinema.series.detail.EpisodeToAirDTO
 import org.hxl.network.model.cinema.series.detail.NetworkDTO
 import org.hxl.network.model.cinema.series.detail.SeasonDTO
 import org.junit.Test
@@ -63,7 +63,7 @@ class SeriesDetailsDTOMapperTest {
         inProduction = true,
         languages = listOf("English"),
         lastAirDate = "2022-12-31",
-        lastEpisodeToAir = LastEpisodeToAirDTO(
+        lastEpisodeToAir = EpisodeToAirDTO(
             id = 456,
             name = "Last Episode",
             overview = "This is the last episode",
@@ -78,7 +78,20 @@ class SeriesDetailsDTOMapperTest {
             stillPath = "episode.png"
         ),
         name = "Series Name",
-        nextEpisodeToAir = "2023-01-01",
+        nextEpisodeToAir = EpisodeToAirDTO(
+            id = 456,
+            name = "Last Episode",
+            overview = "This is the last episode",
+            voteAverage = 7.8,
+            voteCount = 100,
+            airDate = "2023-06-01",
+            episodeNumber = 10,
+            productionCode = "EP10",
+            runtime = 45,
+            seasonNumber = 1,
+            showId = 123,
+            stillPath = "episode.png"
+        ),
         networks = listOf(
             NetworkDTO(
                 id = 123,
@@ -200,8 +213,8 @@ class SeriesDetailsDTOMapperTest {
         inProduction = true,
         languages = listOf("English"),
         lastAirDate = "2022-12-31",
-        lastEpisodeToAir =
-        LastEpisodeToAir(
+        episodeToAir =
+        EpisodeToAir(
             id = 456,
             name = "Last Episode",
             overview = "This is the last episode",
@@ -213,10 +226,23 @@ class SeriesDetailsDTOMapperTest {
             runtime = 45,
             seasonNumber = 1,
             showId = 123,
-            stillPath = "episode.png"
+            stillPath = "${IMG_LOCATION}/episode.png"
         ),
         name = "Series Name",
-        nextEpisodeToAir = "2023-01-01",
+        nextEpisodeToAir = EpisodeToAir(
+            id = 456,
+            name = "Last Episode",
+            overview = "This is the last episode",
+            voteAverage = 7.8,
+            voteCount = 100,
+            airDate = "2023-06-01",
+            episodeNumber = 10,
+            productionCode = "EP10",
+            runtime = 45,
+            seasonNumber = 1,
+            showId = 123,
+            stillPath = "${IMG_LOCATION}/episode.png"
+        ),
         networks = listOf(
             Network(
                 id = 123,
@@ -318,7 +344,7 @@ class SeriesDetailsDTOMapperTest {
         assertEquals(fakeModel.inProduction, converted.inProduction)
         assertEquals(fakeModel.languages, converted.languages)
         assertEquals(fakeModel.lastAirDate, converted.lastAirDate)
-        assertEquals(fakeModel.lastEpisodeToAir, converted.lastEpisodeToAir)
+        assertEquals(fakeModel.episodeToAir, converted.episodeToAir)
         assertEquals(fakeModel.name, converted.name)
         assertEquals(fakeModel.nextEpisodeToAir, converted.nextEpisodeToAir)
         assertEquals(fakeModel.networks, converted.networks)

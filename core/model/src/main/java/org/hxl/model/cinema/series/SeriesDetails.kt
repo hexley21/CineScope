@@ -5,9 +5,8 @@ import org.hxl.model.cinema.detail.ProductionCompany
 import org.hxl.model.cinema.detail.ProductionCountry
 import org.hxl.model.cinema.detail.SpokenLanguage
 import org.hxl.model.cinema.series.detail.CreatedBy
-import org.hxl.model.cinema.series.detail.LastEpisodeToAir
+import org.hxl.model.cinema.series.detail.EpisodeToAir
 import org.hxl.model.cinema.series.detail.Network
-import org.hxl.model.cinema.series.detail.NextEpisodeToAir
 import org.hxl.model.cinema.series.detail.Season
 
 data class SeriesDetails(
@@ -22,9 +21,9 @@ data class SeriesDetails(
     val inProduction: Boolean?,
     val languages: List<String?>?,
     val lastAirDate: String?,
-    val lastEpisodeToAir: LastEpisodeToAir?,
+    val episodeToAir: EpisodeToAir?,
     val name: String?,
-    val nextEpisodeToAir: NextEpisodeToAir?,
+    val nextEpisodeToAir: EpisodeToAir?,
     val networks: List<Network?>?,
     val numberOfEpisodes: Int?,
     val numberOfSeasons: Int?,
@@ -44,4 +43,4 @@ data class SeriesDetails(
     val voteAverage: Double?,
     val voteCount: Int?,
 
-)
+    )

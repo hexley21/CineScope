@@ -8,9 +8,8 @@ import org.hxl.network.model.cinema.detail.ProductionCompanyDTO
 import org.hxl.network.model.cinema.detail.ProductionCountryDTO
 import org.hxl.network.model.cinema.detail.SpokenLanguageDTO
 import org.hxl.network.model.cinema.series.detail.CreatedByDTO
-import org.hxl.network.model.cinema.series.detail.LastEpisodeToAirDTO
+import org.hxl.network.model.cinema.series.detail.EpisodeToAirDTO
 import org.hxl.network.model.cinema.series.detail.NetworkDTO
-import org.hxl.network.model.cinema.series.detail.NextEpisodeToAirDTO
 import org.hxl.network.model.cinema.series.detail.SeasonDTO
 
 @JsonClass(generateAdapter = true)
@@ -38,11 +37,11 @@ data class SeriesDetailsDTO(
     @Json(name = "last_air_date")
     val lastAirDate: String?,
     @Json(name = "last_episode_to_air")
-    val lastEpisodeToAir: LastEpisodeToAirDTO?,
+    val lastEpisodeToAir: EpisodeToAirDTO?,
     @Json(name = "name")
     val name: String?,
     @Json(name = "next_episode_to_air")
-    val nextEpisodeToAir: NextEpisodeToAirDTO?,
+    val nextEpisodeToAir: EpisodeToAirDTO?,
     @Json(name = "networks")
     val networks: List<NetworkDTO?>?,
     @Json(name = "number_of_episodes")

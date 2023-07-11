@@ -8,10 +8,11 @@ import org.hxl.network.model.cinema.detail.ProductionCountryDTO
 import org.hxl.network.model.cinema.detail.SpokenLanguageDTO
 import org.hxl.network.model.cinema.movie.MovieDetailsDTO
 import org.hxl.network.model.cinema.movie.MovieListItemDTO
+import org.hxl.network.model.cinema.movie.detail.BelongsToCollectionDTO
 import org.hxl.network.model.cinema.series.SeriesDetailsDTO
 import org.hxl.network.model.cinema.series.SeriesListItemDTO
 import org.hxl.network.model.cinema.series.detail.CreatedByDTO
-import org.hxl.network.model.cinema.series.detail.LastEpisodeToAirDTO
+import org.hxl.network.model.cinema.series.detail.EpisodeToAirDTO
 import org.hxl.network.model.cinema.series.detail.NetworkDTO
 import org.hxl.network.model.cinema.series.detail.SeasonDTO
 import org.hxl.test.fake.TestConstants.PAGES
@@ -118,9 +119,9 @@ object FakeNetworkMovieFactory {
             Random.nextBoolean(),
             List(languages) { randomUUID().toString() },
             randomUUID().toString(),
-            getLastEpisodeToAirDTO(),
+            getEpisodeToAirDTO(),
             randomUUID().toString(),
-            randomUUID().toString(),
+            getEpisodeToAirDTO(),
             List(network) { getNetworkDTO() },
             Random.nextInt(),
             Random.nextInt(),
@@ -152,8 +153,8 @@ object FakeNetworkMovieFactory {
         )
     }
 
-    fun getLastEpisodeToAirDTO(): LastEpisodeToAirDTO {
-        return LastEpisodeToAirDTO(
+    fun getEpisodeToAirDTO(): EpisodeToAirDTO {
+        return EpisodeToAirDTO(
             Random.nextInt(),
             randomUUID().toString(),
             randomUUID().toString(),
@@ -194,7 +195,7 @@ object FakeNetworkMovieFactory {
         return MovieDetailsDTO(
             Random.nextBoolean(),
             randomUUID().toString(),
-            randomUUID().toString(),
+            getBelongsToCollectionDTO(),
             Random.nextInt(),
             List(genres) { getGenreDTO() },
             randomUUID().toString(),
@@ -245,6 +246,15 @@ object FakeNetworkMovieFactory {
 
     fun getSpokenLanguageDTO(): SpokenLanguageDTO {
         return SpokenLanguageDTO(
+            randomUUID().toString(),
+            randomUUID().toString(),
+            randomUUID().toString()
+        )
+    }
+
+    fun getBelongsToCollectionDTO(): BelongsToCollectionDTO {
+        return BelongsToCollectionDTO(
+            Random.nextInt(),
             randomUUID().toString(),
             randomUUID().toString(),
             randomUUID().toString()

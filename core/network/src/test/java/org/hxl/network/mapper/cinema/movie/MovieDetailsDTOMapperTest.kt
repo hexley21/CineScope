@@ -2,6 +2,7 @@ package org.hxl.network.mapper.cinema.movie
 
 
 import junit.framework.TestCase.assertEquals
+import org.hxl.model.cinema.detail.BelongsToCollection
 import org.hxl.model.cinema.detail.Genre
 import org.hxl.model.cinema.detail.ProductionCompany
 import org.hxl.model.cinema.detail.ProductionCountry
@@ -13,6 +14,7 @@ import org.hxl.network.model.cinema.detail.ProductionCompanyDTO
 import org.hxl.network.model.cinema.detail.ProductionCountryDTO
 import org.hxl.network.model.cinema.detail.SpokenLanguageDTO
 import org.hxl.network.model.cinema.movie.MovieDetailsDTO
+import org.hxl.network.model.cinema.movie.detail.BelongsToCollectionDTO
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -23,7 +25,12 @@ class MovieDetailsDTOMapperTest {
     private val fakeDTO = MovieDetailsDTO(
         adult = true,
         backdropPath = "/backdrop.png",
-        belongsToCollection = "Collection A",
+        belongsToCollection = BelongsToCollectionDTO(
+            1,
+            "name",
+            "poster.png",
+            "backdrop.png"
+        ),
         budget = 1000000,
         genres = listOf(
             GenreDTO(id = 1, name = "Action"),
@@ -87,7 +94,12 @@ class MovieDetailsDTOMapperTest {
     private val fakeModel = MovieDetails(
         adult = true,
         backdropPath = "${IMG_LOCATION}/backdrop.png",
-        belongsToCollection = "Collection A",
+        belongsToCollection = BelongsToCollection(
+            1,
+            "name",
+            "${IMG_LOCATION}/poster.png",
+            "${IMG_LOCATION}/backdrop.png"
+        ),
         budget = 1000000,
         genres = listOf(
             Genre(

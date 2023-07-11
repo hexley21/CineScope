@@ -1,16 +1,17 @@
 package org.hxl.network.mapper.cinema.series.detail
 
 import junit.framework.TestCase.assertEquals
-import org.hxl.model.cinema.series.detail.LastEpisodeToAir
-import org.hxl.network.model.cinema.series.detail.LastEpisodeToAirDTO
+import org.hxl.model.cinema.series.detail.EpisodeToAir
+import org.hxl.network.mapper.MapperConstants.IMG_LOCATION
+import org.hxl.network.model.cinema.series.detail.EpisodeToAirDTO
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 @RunWith(JUnit4::class)
-class LastEpisodeToAirDTOMapperTest {
+class EpisodeToAirDTOMapperTest {
 
-    private val fakeDTO = LastEpisodeToAirDTO(
+    private val fakeDTO = EpisodeToAirDTO(
         id = 456,
         name = "Last Episode",
         overview = "This is the last episode",
@@ -25,7 +26,7 @@ class LastEpisodeToAirDTOMapperTest {
         stillPath = "episode.png"
     )
 
-    private val fakeModel = LastEpisodeToAir(
+    private val fakeModel = EpisodeToAir(
         id = 456,
         name = "Last Episode",
         overview = "This is the last episode",
@@ -37,7 +38,7 @@ class LastEpisodeToAirDTOMapperTest {
         runtime = 45,
         seasonNumber = 1,
         showId = 123,
-        stillPath = "episode.png"
+        stillPath = "${IMG_LOCATION}/episode.png"
     )
 
     @Test
